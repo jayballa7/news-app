@@ -1,28 +1,28 @@
 import React from 'react';
 import Header from './Header.js';
+import '../styles/Login.scss';
 
 function Login() {
     return(
-        <div>
-            <Header />
-            <div className = "container">
-                <div className = "row">
-                    <div className = "col-md-8 offset-md-2">
-                        <form>
-                            <div className="form-group">
-                                <label for="loginEmail">Email address</label>
-                                <input type="email" class="form-control" id="loginEmail" aria-describedby="email" />
-                            </div>
-                            <div className="form-group">
-                                <label for="loginPassword">Password</label>
-                                <input type="password" class="form-control" id="loginPassword" />
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form> 
-                    </div>
-                </div>
+        <div className = "grid">
+        <div className = "box1">
+        <Header />
+        </div>
+        <div className = "box2">
+        <div className = "wrapper">
+            <form className="login" action="" method="post">
+                <h2 className = "loginHeading">Login</h2>
+                <div><label for="username">Username </label>
+                <input type="text" name="username" id="username"/></div>
+                <div><label for="password">Password </label>
+                <input type="password" name="password" id="password"/></div>
+                <div><a href="#" type = "submit" className="button1 bouncy">What's New?</a></div>
+                <div><p className = "noAccount">Don't have an account? <a href='#' className = "signupLink">Sign up.</a></p></div>
+            </form>
+            </div>
             </div>
         </div>
+    
     )
 }
 
