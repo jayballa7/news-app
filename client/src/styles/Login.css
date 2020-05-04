@@ -1,9 +1,12 @@
 html, body {
-  background-color: black;
+  background-image: url("../img/newspaper-2.jpg");
+  background-size: cover;
 }
 
 .grid {
   height: 100vh;
+  background-color: black;
+  opacity: 0.9;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr;
@@ -22,8 +25,7 @@ html, body {
 
 .box2 {
   font-weight: bold;
-  background-image: url("../img/newspaper-background.jpg");
-  background-size: cover;
+  background-color: white;
   text-align: center;
   border: 5px solid black;
   border-radius: 10px;

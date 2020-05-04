@@ -9,11 +9,15 @@ $darkpink:#ba2d65;
 }
 
 html, body {
-    background-color: black;
+    // background-color: black;
+    background-image: url('../img/newspaper-2.jpg');
+    background-size: cover;
   }
 
   .grid {
       height: 100vh;
+      background-color: black;
+      opacity: 0.9;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr;
@@ -29,8 +33,9 @@ html, body {
 
 .box2 {
     font-weight: bold;
-    background-image: url('../img/newspaper-background.jpg');
-    background-size: cover;
+    // background-image: url('../img/newspaper-background.jpg');
+    // background-size: cover;
+    background-color: white;
     text-align: center;
     border: 5px solid black;
     border-radius:10px;
@@ -71,7 +76,7 @@ html, body {
     width: 40%;
     margin: 0 auto;
     margin-top: 3%;
-    background-color: black;
+    background-color:rgba(black, 1);
     color: white;
     padding:0.35em 1.2em;
     border:0.1em solid black;
