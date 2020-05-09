@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header.js';
 import '../styles/Login.scss';
+import {Link} from 'react-router-dom';
 
 function Login() {
     return(
@@ -17,7 +18,7 @@ function Login() {
                 <div><label for="password">Password </label>
                 <input type="password" name="password" id="password"/></div>
                 <div><a href="#" type = "submit" className="button1 bouncy">What's New?</a></div>
-                <div><p className = "noAccount">Don't have an account? <a href='#' className = "signupLink">Sign up.</a></p></div>
+                <div><p className = "noAccount">Don't have an account? <Link to= '/signup' className = "signupLink">Sign Up</Link></p></div>
             </form>
             </div>
             </div>

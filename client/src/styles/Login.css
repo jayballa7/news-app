@@ -29,8 +29,8 @@ html, body {
   text-align: center;
   border: 5px solid black;
   border-radius: 10px;
-  -webkit-box-shadow: -1px 1px #f781b0, -2px 2px #f781b0, -3px 3px #f781b0, -4px 4px #f781b0, -5px 5px #f781b0, -6px 6px #f781b0, -7px 7px #ba2d65, -8px 8px #ba2d65, -9px 9px #ba2d65, -10px 10px #ba2d65;
-          box-shadow: -1px 1px #f781b0, -2px 2px #f781b0, -3px 3px #f781b0, -4px 4px #f781b0, -5px 5px #f781b0, -6px 6px #f781b0, -7px 7px #ba2d65, -8px 8px #ba2d65, -9px 9px #ba2d65, -10px 10px #ba2d65;
+  -webkit-box-shadow: 1px -1px #f781b0, -2px 2px #f781b0, -3px 3px #f781b0, -4px 4px #f781b0, -5px 5px #f781b0, -6px 6px #f781b0, -7px 7px #ba2d65, -8px 8px #ba2d65, -9px 9px #ba2d65, -10px 10px #ba2d65;
+          box-shadow: 1px -1px #f781b0, -2px 2px #f781b0, -3px 3px #f781b0, -4px 4px #f781b0, -5px 5px #f781b0, -6px 6px #f781b0, -7px 7px #ba2d65, -8px 8px #ba2d65, -9px 9px #ba2d65, -10px 10px #ba2d65;
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: box2;

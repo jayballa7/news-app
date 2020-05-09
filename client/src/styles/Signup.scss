@@ -52,9 +52,16 @@ html, body {
     grid-area: box2;
 }
 
-  .login{
+  .signup{
     color: black;
     font-size: 1em;
+  }
+
+  #email {
+    @include inputStyle();
+    &:hover {
+        background-color: lightpink;
+    }
   }
 
   #username {
@@ -71,7 +78,7 @@ html, body {
     }
   }
 
-  .button1{
+  a.button1{
     display: block;
     width: 40%;
     margin: 0 auto;
@@ -87,12 +94,12 @@ html, body {
     font-weight: bold;
     transition: all 0.2s;
     }
-.button1:hover{
+a.button1:hover{
     color:#000000;
     background-color:#FFFFFF;
     }
 @media all and (max-width:30em){
-.button1{
+a.button1{
     display:block;
     margin:0.4em auto;
 }
@@ -112,6 +119,6 @@ html, body {
     100%{top:0em;}
     }
 
-.noAccount {
+.hasAccount {
     font-weight:bold;
 }
