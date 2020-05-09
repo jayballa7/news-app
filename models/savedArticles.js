@@ -15,6 +15,12 @@ module.exports = function(sequelize, DataTypes) {
     link: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+
+    // boolean value to tell if the article has been saved or not
+    saved: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
   });
   return savedArticles;
