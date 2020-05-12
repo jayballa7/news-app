@@ -1,15 +1,14 @@
-import React from "react";
-// import logo from "./logo.svg";
-import "./App.css";
-import Login from './components/Login';
-import Signup from "./components/Signup";
-import {BrowserRouter as Router , Route} from 'react-router-dom';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import "./App.scss";
+import Login from "./components/Login.js";
+import Signup from "./components/Signup.js";
 import Members from "./components/Members";
-
 
 function App() {
   
   return (
+    
     <div className="App">
       {/* <Login /> */}
       {/* <Signup/> */}
@@ -25,6 +24,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;
