@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import "./App.scss";
-import Login from "./components/Login.js";
-import Signup from "./components/Signup.js";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 import Members from "./components/Members";
+
+
+
 
 function App() {
   

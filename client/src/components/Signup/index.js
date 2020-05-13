@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import { Redirect } from "react-router-dom";
+import { Redirect ,Link} from "react-router-dom";
 // import Members from "../Members";
+import '../../styles/Signup.scss';
 import '../../App.js';
+import Header from '../Header.js';
 
 class Signup extends Component {
 	constructor() {
@@ -89,49 +91,29 @@ render() {
     }
     else{
 	return (
-		<div className="SignupForm">
-			<h4>Sign up</h4>
-			<form className="form-horizontal">
-				<div className="form-group">
-					<div className="col-1 col-ml-auto">
-						<label className="form-label" htmlFor="email">email</label>
-					</div>
-					<div className="col-3 col-mr-auto">
-						<input className="form-input"
-							type="text"
-							id="email"
-							name="email"
-							placeholder="email"
-							value={this.state.email}
-							onChange={this.handleChange}
-						/>
-					</div>
-				</div>
-				<div className="form-group">
-					<div className="col-1 col-ml-auto">
-						<label className="form-label" htmlFor="password">Password: </label>
-					</div>
-					<div className="col-3 col-mr-auto">
-						<input className="form-input"
-							placeholder="password"
-							type="password"
-							name="password"
-							value={this.state.password}
-							onChange={this.handleChange}
-						/>
-					</div>
-				</div>
-				<div className="form-group ">
-					<div className="col-7"></div>
-					<button
-						className="btn btn-primary col-1 col-mr-auto"
-						onClick={this.handleSubmit}
-						type="submit"
-					>Sign up</button>
-                    <button>Already a member? <a href="/login">Login</a></button>
-				</div>
-			</form>
-		</div>
+
+		<div className = "grid">
+        <div className = "box1">
+        <Header />
+        </div>
+        <div className = "box2">
+        <div className = "wrapper">
+            <form className="signup" action="" method="post">
+                <h2 className = "signupHeading">Sign Up</h2>
+                <div><label for="email">Enter your email: </label>
+                <input type="text" name="email" id="email" value={this.state.email} onChange={this.handleChange}/></div>
+                <div><label for="username">Choose a username:</label>
+                <input type="text" name="username" id="username"/></div>
+                <div><label for="password">Choose a password:</label>
+                <input type="password" name="password" id="password" value={this.state.password} onChange={this.handleChange}/></div>
+                <div><a href="#" type = "submit" className="button1 bouncy" onClick={this.handleSubmit}>Sign Up</a></div>
+                <div><p className = "hasAccount">Already have an account? <Link to ='/login' className = "loginLink">Login</Link></p></div>
+            </form>
+            </div>
+            </div>
+        </div>
+
+		
 
 	)
 }

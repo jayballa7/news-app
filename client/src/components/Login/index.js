@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import { Redirect } from "react-router-dom";
+import { Link,Redirect } from "react-router-dom";
+import Header from '../Header.js';
+import '../../styles/Login.scss';
 class Login extends React.Component{
     constructor() {
         super()
@@ -93,48 +95,30 @@ class Login extends React.Component{
         }
         else{
         return (
-            <div>
-                <h1>Login Page</h1>
-                <form className="form-horizontal">
-                        <div className="form-group">
-                            <div className="col-1 col-ml-auto">
-                                <label className="form-label" htmlFor="email">email</label>
-                            </div>
-                            <div className="col-3 col-mr-auto">
-                                <input className="form-input"
-                                    type="text"
-                                    id="email"
-                                    name="email"
-                                    placeholder="email"
-                                    value={this.state.email}
-                                    onChange={this.handleChange}
-                                />
-                            </div>
-                        </div>
-                        <div className="form-group">
-                            <div className="col-1 col-ml-auto">
-                                <label className="form-label" htmlFor="password">Password: </label>
-                            </div>
-                            <div className="col-3 col-mr-auto">
-                                <input className="form-input"
-                                    placeholder="password"
-                                    type="password"
-                                    name="password"
-                                    value={this.state.password}
-                                    onChange={this.handleChange}
-                                />
-                            </div>
-                        </div>
-                        <div className="form-group ">
-                            <div className="col-7"></div>
-                            <button
-                                className="btn btn-primary col-1 col-mr-auto"
-                               
-                                onClick={this.handleSubmit}
-                                type="submit">Login</button>
-                        </div>
-                    </form>
+            <div className = "grid">
+            <div className = "box1">
+            <Header />
             </div>
+            <div className = "box2">
+            <div className = "wrapper">
+                <form className="login" action="" method="post">
+                    <h2 className = "loginHeading">Login</h2>
+                    <div><label for="email">Email  </label>
+                    <input type="text" name="email" id="email" value={this.state.email}  onChange={this.handleChange}/></div>
+                    {/* <div><label for="username">Username </label>
+                    <input type="text" name="username" id="username"/></div> */}
+                    <div><label for="password">Password </label>
+                    <input type="password" name="password" id="password" value={this.state.password}  onChange={this.handleChange}/></div>
+                    <div><a href="#" type = "submit" className="button1 bouncy"   onClick={this.handleSubmit}>What's New?</a></div>
+                    <div><p className = "noAccount">Don't have an account? <Link to= '/signup' className = "signupLink">Sign Up</Link></p></div>
+                </form>
+                </div>
+                </div>
+            </div>
+
+
+
+
         )
     }
 }
