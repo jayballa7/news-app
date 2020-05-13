@@ -8,7 +8,6 @@ module.exports = function(app) {
   // Otherwise the user will be sent an error
   
   app.post("/api/login",function (req, res, next) {
-    console.log("@@@");
     console.log('routes/user.js, login, req.body: ');
     console.log(req.body)
     next()
@@ -22,8 +21,6 @@ module.exports = function(app) {
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", function(req, res) {
-    console.log("REACHEDDDDDDDDD");
-    console.log("^^^^",req.body);
     db.User.create({
       email: req.body.email,
       password: req.body.password
@@ -36,13 +33,15 @@ module.exports = function(app) {
       });
   });
 
-  // Route for logging user out
+  // // Route for logging user out
   // app.get("/api/logout", function(req, res) {
+  //   console.log("Inside logout###")
   //   req.logout();
   //   res.redirect("/");
   // });
 
   app.post('/api/logout', (req, res) => {
+    console.log("LOGOUTTTT")
     if (req.user) {
         req.logout()
         res.send({ msg: 'logging out' })
@@ -53,6 +52,7 @@ module.exports = function(app) {
 
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", function(req, res) {
+    // console.log("REQ>USER??",req.user)
     if (!req.user) {
       // The user is not logged in, send back an empty object
       res.json({});
@@ -67,7 +67,6 @@ module.exports = function(app) {
   });
 
   app.get('/api/user/', (req, res, next) => {
-    console.log('===== user!!======')
     console.log(req.user)
     if (req.user) {
         res.json({ user: req.user })
@@ -76,6 +75,23 @@ module.exports = function(app) {
     }
 })
 
+app.delete('/api/userdelete/:id',(req,res)=>{
+  console.log("req id is",req.params.id);
+    db.User.destroy({
+      where:{
+        id:req.params.id
+      }
+    }).then(function () {
+      // console.log(req.body);
+      // console.log(result);
+      console.log('Deletion successful');
+      res.end()
+      // res.logout()
+      // res.json({result});
+      // res.redirect('/api/logout');
+      // location.href('/api/logout')
+    });
+})
 
 
 };
