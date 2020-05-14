@@ -6,7 +6,9 @@ function MainPage() {
         <div className="container">
             <div className="mainpage">
                 <div className="mp-cell header">
-                    <div className="mp-item">Header</div>
+                    <div className="mp-item">
+                        <h1 data-heading="NewsFlash">NewsFlash</h1>
+                    </div>
                 </div>
                 <div className="mp-cell username">
                     <div className="mp-item">Username</div>
