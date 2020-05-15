@@ -61,13 +61,21 @@
       transform: translateX(-50%);
       margin-top: 10px;
     }
-  button {
+  .btn {
     background-color: #FEE005;
     width: 70%;
     color: white;
     border: transparent;
     border-radius: 100px;
     font-size: 1rem;
+  }
+  .btn-2 {
+    background-color: #FEE005;
+    width: 40%;
+    color: white;
+    border: transparent;
+    border-radius: 100px;
+    font-size: 2rem;
   }
   &--profile {
     border-top-left-radius: 10px;

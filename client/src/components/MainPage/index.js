@@ -61,7 +61,7 @@ function MainPage() {
                     <div className="card__text">
                     <h1 className="card--header">Lorem ipsum dolor sit amet, sed do eiusmod magna aliqua.</h1>
                         <div class="separator"></div>
-                        <div class="card--footer"><button class="btn">Link</button></div>
+                        <div class="card--footer"><button class="btn-2">Link</button></div>
                     </div>
                 </div>
                 <div className="mp-cell rbox-1">
