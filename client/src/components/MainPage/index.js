@@ -13,18 +13,26 @@ function MainPage() {
                     </div>
                 </div>
                 <div className="mp-cell username">
-                    <div className="mp-item">Welcome</div>
+                <div className="card__text">
+                        <h3 className="card--header">Welcome</h3>
+                    </div>
                 </div>
-                <article className="mp-cell sidebox-1">
-                    Weather
-                </article>
+                <div className="mp-cell sidebox-1">
+                    <div className="card__text">
+                        <h3 className="card--header">Weather</h3>
+                    </div>
+                </div>
                 <div className="mp-cell searchbox">
-                    <div className="mp-item">Searchbox</div>
+                <div className="card__text">
+                        <h3 className="card--header">Searchbox</h3>
+                    </div>
                 </div>
                 <div className="mp-cell signup">
-                    <div className="mp-item">Signup</div>
+                <div className="card__text">
+                        <h3 className="card--header">Login/Signup</h3>
+                    </div>
                 </div>
-                <article className="mp-cell sidebox-2">
+                <div className="mp-cell sidebox-2">
                     <div className="card--profile">
                         <img className = "img" src={Img} alt="news-image"/>
                     </div>
@@ -33,8 +41,8 @@ function MainPage() {
                         <div class="separator"></div>
                         <div class="card--footer"><button class="btn">Link</button></div>
                     </div>
-                </article>
-                <article className="mp-cell sidebox-3">
+                </div>
+                <div className="mp-cell sidebox-3">
                     <div className="card--profile">
                         <img className = "img" src={Img} alt="news-image"/>
                     </div>
@@ -43,8 +51,8 @@ function MainPage() {
                         <div class="separator"></div>
                         <div class="card--footer"><button class="btn">Link</button></div>
                     </div>
-                </article>
-                <article className="mp-cell mainbox-1">
+                </div>
+                <div className="mp-cell mainbox-1">
                     <div className="card--profile">
                         <img className = "img" src={Img} alt="news-image"/>
                     </div>
@@ -53,8 +61,8 @@ function MainPage() {
                         <div class="separator"></div>
                         <div class="card--footer"><button class="btn">Link</button></div>
                     </div>
-                </article>
-                <article className="mp-cell rbox-1">
+                </div>
+                <div className="mp-cell rbox-1">
                     <div className="card--profile">
                         <img className = "img" src={Img} alt="news-image"/>
                     </div>
@@ -63,8 +71,8 @@ function MainPage() {
                         <div class="separator"></div>
                         <div class="card--footer"><button class="btn">Link</button></div>
                     </div>
-                </article>
-                <article className="mp-cell rbox-2">
+                </div>
+                <div className="mp-cell rbox-2">
                     <div className="card--profile">
                         <img className = "img" src={Img} alt="news-image"/>
                     </div>
@@ -73,8 +81,8 @@ function MainPage() {
                         <div class="separator"></div>
                         <div class="card--footer"><button class="btn">Link</button></div>
                     </div>
-                </article>
-                <article className="mp-cell mdbox-1">
+                </div>
+                <div className="mp-cell mdbox-1">
                     <div className="card--profile">
                         <img className = "img" src={Img} alt="news-image"/>
                     </div>
@@ -83,8 +91,8 @@ function MainPage() {
                         <div class="separator"></div>
                         <div class="card--footer"><button class="btn">Link</button></div>
                     </div>
-                </article>
-                <article className="mp-cell mdbox-2">
+                </div>
+                <div className="mp-cell mdbox-2">
                     <div className="card--profile">
                         <img className = "img" src={Img} alt="news-image"/>
                     </div>
@@ -93,7 +101,7 @@ function MainPage() {
                         <div class="separator"></div>
                         <div class="card--footer"><button class="btn">Link</button></div>
                     </div>
-                </article>
+                </div>
                 <div className="mp-cell ticker">
                     <div className="mp-item">Ticker</div>
                 </div>
