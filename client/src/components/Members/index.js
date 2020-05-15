@@ -5,11 +5,13 @@ import '../../styles/MainPage.scss';
 import Signup from '../Signup';
 import '../../App.css'
 
+
 class Members extends React.Component{
 
     constructor() {
         super()
         this.state={
+
             email:null,
             uid:'',
             news:[],
@@ -18,6 +20,7 @@ class Members extends React.Component{
         }
         this.logout = this.logout.bind(this)
         this.displayName=this.displayName.bind(this)
+
         this.fillPage=this.fillPage.bind(this)
         this.handleSignup = this.handleSignup.bind(this)
     }
@@ -45,16 +48,19 @@ class Members extends React.Component{
             })
         }
        
+
     }
 
     logout(event) {
         event.preventDefault()
-        // console.log('logging out')
+
         axios.post('/api/logout').then(response => {
           console.log(response.data)
           if (response.status === 200) {
             this.setState({
+
                 email:null,
+
                 uid:'',
               redirectTo:'/'
             })
@@ -82,6 +88,7 @@ class Members extends React.Component{
       
     }
 
+
     handleSignup(){
         console.log("Clicked Me")
         this.setState({
@@ -91,6 +98,7 @@ class Members extends React.Component{
    
     displayName(){
         // console.log("000000000000000")
+
         axios.get("/api/user_data")
         .then(data=> {
             if(data.status===200){
@@ -100,9 +108,11 @@ class Members extends React.Component{
                     email:data.data.email
                 })
             }
+
         // console.log("Members!",data)
         // console.log("useremail:",data.data.email);
         // console.log("userdbID:",data.data.id);
+
     //    userid=data.data.id;
           
         // $(".member-name").text(data.email);
@@ -115,7 +125,9 @@ class Members extends React.Component{
     }
    
     render() {  
+
         console.log(this.state.email)
+
         // if(this.state.uid!==''){
         //     this.displayName();
         // }
@@ -126,7 +138,9 @@ class Members extends React.Component{
            
         }
         else{
+
         // console.log("Inside members123")
+
         return(
             <div>
                 <nav className="navbar navbar-default">
@@ -138,6 +152,7 @@ class Members extends React.Component{
                         </div>
                 </div>
                 </nav>
+
                 {/* <div className="container">
                 <div className="row">
                 <div className="col-md-6 col-md-offset-3">
@@ -175,6 +190,7 @@ class Members extends React.Component{
                 </div>
             </div>
             </div>
+
         )
         }
     }

@@ -4,6 +4,8 @@ import "./App.scss";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Members from "./components/Members";
+import MainPage from "./components/MainPage";
+
 
 
 
@@ -13,15 +15,19 @@ function App() {
   return (
     
     <div className="App">
-      {/* <Login /> */}
-      {/* <Signup/> */}
+
       <Router >
 
       <Route exact path="/login" component={Login} />
       <Route exact path="/signup" component={Signup} />
       <Route exact path="/memberspage" component={Members}/>
+
+      <Route exact path="/" component={Signup} />
+      <Route exact path="/main" component={MainPage} />
+
       {/* <Route exact path="/" component={Signup} /> */}
       <Route exact path="/" component={Members} />
+
 
     </Router>
 
