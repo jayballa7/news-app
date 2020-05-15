@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+const { getData } = require("./api-news");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -75,8 +76,68 @@ module.exports = function(app) {
         res.json({ user: null })
     }
 })
+    // sends the suggested articles to the user
+  app.get('/api/user/suggested', (req, res) => {
+    db.savedArticles.findAll(
+        {
+          where: {
+            email: req.email,
+            saved: false
+          }
+        }
+    ).then(articles => res.send(articles));
+  })
 
+  // sends the articles the user has saved
+  app.get('/api/user/saved', (req, res) => {
+    db.SavedArticle.findAll(
+        {
+            where: {
+              email: req.email,
+              saved: true
+            }
+        }
+    ).then(articles => res.send(articles));
+})
 
+// route for setting toggling the articles "saved" status
+app.post('/api/user/:id', (req, res) => {
+  db.SavedArticle.update(
+    {
+      saved: true
+    },
+    {
+      where: {
+        id: req.params.id
+      }
+    }
+  )
+})
+
+// route for getting article data based on user categories
+app.get("/api/categories/:email", (req, res) => {
+  const userArticles = [];
+  db.User.findAll(
+    {
+      attributes: ['categories']
+    },
+    {
+      where: {
+        email: req.params.email
+      }
+    }
+  )
+  .then(data => {
+    
+    let categories = data.replace(" ", "").split(',');
+    for (let i = 0; i < categories; i++) {
+      getData(categories[i], data => {
+        userArticles.push(data);
+      })
+    }
+    res.send(JSON.stringify(userArticles));
+  })
+})
 
 };
 
