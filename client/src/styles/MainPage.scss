@@ -33,10 +33,11 @@
   
 
 .card {
+  width:100%;
   text-align: center;
   display:grid;
   grid-gap: 1rem;
-  grid-template-columns: repeat(5, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-template-rows: 20vh 20vh repeat(2, minmax(100px, 1fr)) 20vh;
   img {
     width: 100%;

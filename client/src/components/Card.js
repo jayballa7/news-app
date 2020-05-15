@@ -1,14 +1,19 @@
 import React from 'react';
-import '../styles/Card.scss';
+import '../styles/MainPage.scss';
 import Img from '../img/test-img.jpg'
 
-function Card() {
+function Card(boxClass) {
     return(
-        <div className="card">
+        <div className={boxClass}>
+        <div className="card--profile">
             <img className = "img" src={Img} alt="news-image"/>
-            <h5 className = "title">Lorem ipsum dolor sit amet, sed do eiusmod magna aliqua. Lorem ipsum dolor sit amet, sed do eiusmod magna aliqua.</h5>
-            <p className = "link">Link</p>
         </div>
+        <div className="card__text">
+            <h5 className="card--header">Lorem ipsum dolor sit amet, sed do eiusmod magna aliqua.</h5>
+            <div class="separator"></div>
+            <div class="card--footer"><button class="btn">Link</button></div>
+        </div>
+    </div>
     )
 }
 
