@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/MainPage.scss';
+// import '../styles/MainPage.scss';
 import Img from '../img/test-img.jpg'
 
 function Card(boxClass) {
