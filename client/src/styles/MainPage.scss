@@ -1,4 +1,6 @@
+
 @import "Variables";
+
 
 .container {
     overflow-x: hidden;
@@ -9,17 +11,24 @@
   .mainpage {
     position: relative;
     display: grid;
+
     background-color: rgba(0,0,0,0.7);
+
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 2%;
     margin: 0;
+
     padding: 3%;
+
+
   }
   
   .mp-cell {
     background-color: #fff;
+
     border: 4px solid black;
+
     padding: 2%;
   }
   
@@ -27,9 +36,11 @@
     grid-column: 1 / span 4;
   }
 
+
 //   h1 {
 //     @include header(rotate(0deg));
 // }
+
   
   .username {
     grid-column: 5 / span 1;
@@ -46,7 +57,9 @@
   .sidebox-1 {
     grid-column: 1;
     grid-row: 2;
+
   }
+
 
   .sidebox-2 {
       grid-column: 1;
