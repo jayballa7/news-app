@@ -8,7 +8,7 @@ const minute = 60 * seconds;
 const hour = minute * 60;
 const hours = 12 * hour;
 let linkLimit = 3;
-let lastDate = 0;
+// let lastDate = 0;
 
 const nodemailer = require("nodemailer");let transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -116,14 +116,21 @@ const getLinks = (list, type)  => {
   return subList;
 }
 
-//save each link connected to an email to the database
+// save each link connected to an email 
+// to the database and delete unsaved articles
 const saveArticles = (list, email) => {
-  
-  for (let k = 0; k < list.length; k++) {
+
+  db.SavedArticle.destroy({
+    where: {
+      saved: false
+    }
+  })
+
+  for (let i = 0; i < list.length; i++) {
     db.SavedArticle.create(
       {
         email: email,
-        link: list[k]
+        link: list[i]
       }
     )
   }
