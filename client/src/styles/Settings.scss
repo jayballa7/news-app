@@ -21,7 +21,7 @@
   
 
 .card {
-  margin-top: 8%;
+  margin-top: 3%;
   width:50%;
   display:grid;
   gap: 1rem;
@@ -215,18 +215,20 @@
     .card {
      gap: 0;
      grid-template-columns: minmax(10px, 1fr);
-     grid-template-rows: 20vh 50vh;
+     grid-template-rows: 70vh 125vh;
     }
     .profile-card {
         margin: 0;
+        width: 200%;
         grid-column: 1;
         grid-row: 1;
       }
 
       .categories {
         // border-radius:30px;
-        // width: 200%;
+        width: 200%;
         margin: 0;
+        font-size: 0.8rem;
         // text-align: left;
         // // display: grid;
         // background-color: #fff;
@@ -234,6 +236,14 @@
         // padding: 2%;
         grid-column: 1;
         grid-row: 2;
+
+        .save {
+            color:white;
+            width: 30%;
+            height: 4vh;
+            border-radius: 10px;
+            font-size: 1rem; 
+          }
     }
 
   }
