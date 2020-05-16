@@ -20,6 +20,12 @@ module.exports = function(sequelize, DataTypes) {
     saved: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
+    },
+
+    // title of the article
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   });
   return savedArticles;
