@@ -19,7 +19,7 @@
   }
   
   .mainpage {
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0,0,0,0.8);
     margin: 0;
     padding: 3%;
   }
@@ -33,7 +33,6 @@
   
 
 .card {
-  width:100%;
   text-align: center;
   display:grid;
   gap: 1rem;
@@ -43,7 +42,7 @@
     width: 100%;
     object-fit: cover;
     border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
+    border-top-right-radius: 10px;
   }
   &__text {
     padding: 10px 20px;

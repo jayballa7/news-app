@@ -5,15 +5,15 @@ import Img from "../../img/profile-img.jpg";
 
 function Settings() {
     return(
-        <div className="container">
-            <div className="mainpage">
-                <div className="card">
-                    <div className="mp-cell profile-card">
-                        <div className="card--profile">
+        <div className="setting-container">
+            <div className="setting-page">
+                <div className="setting-card">
+                    <div className="sp-cell profile-card">
+                        <div className="setting-card--profile">
                             <img className = "img" src={Img} alt="profile-photo"/>
                         </div>
-                        <div className="card__text">
-                            <h1 className="card--header">Username</h1>
+                        <div className="setting-card__text">
+                            <h1 className="setting-card--header">Username</h1>
                             <div className = "notifications">
                                 <label className="switch">
                                 <input type="checkbox"/>
@@ -22,8 +22,8 @@ function Settings() {
                                 <p>Receive email notifications</p>
                             </div>
                             <hr></hr>
-                            <div className="card--footer"><p><Link to= '/' className = "delete">Delete Account</Link></p></div>
-                            <div className="card--footer"><p><Link to= '/login' className = "logout">Log Out</Link></p></div>
+                            <div className="setting-card--footer"><p><Link to= '/' className = "delete">Delete Account</Link></p></div>
+                            <div className="setting-card--footer"><p><Link to= '/login' className = "logout">Log Out</Link></p></div>
                         </div>
                     </div>
 

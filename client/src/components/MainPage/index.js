@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../styles/MainPage.scss';
-import Img from "../../img/test-img.jpg"
+import Img from "../../img/test-img.jpg";
 
 function MainPage() {
     return(
@@ -38,8 +38,8 @@ function MainPage() {
                     </div>
                     <div className="card__text">
                         <h5 className="card--header">Lorem ipsum dolor sit amet, sed do eiusmod magna aliqua.</h5>
-                        <div class="separator"></div>
-                        <div class="card--footer"><button class="btn">Link</button></div>
+                        <div className="separator"></div>
+                        <div className="card--footer"><button class="btn">Link</button></div>
                     </div>
                 </div>
                 <div className="mp-cell sidebox-3">

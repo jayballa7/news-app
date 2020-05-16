@@ -1,17 +1,17 @@
 @import "Variables";
 
 
-.container {
+.setting-container {
     min-height: 100vh;
   }
   
-  .mainpage {
+  .setting-page {
     background-color: rgba(0,0,0,0.9);
     margin: 0;
     padding: 3%;
   }
 
-  .mp-cell {
+  .sp-cell {
     display: grid;
     width: 100%;
     background-color: #fff;
@@ -20,7 +20,7 @@
   }
   
 
-.card {
+.setting-card {
   margin-top: 3%;
   width:50%;
   display:grid;
@@ -109,7 +109,7 @@
     border-radius: 50%;
   }
 
-.card--header {
+.setting-card--header {
     text-align: center;
 }
 
@@ -212,7 +212,7 @@
   }
 
   @media screen and (max-width: 575.98px) {
-    .card {
+    .setting-card {
      gap: 0;
      grid-template-columns: minmax(10px, 1fr);
      grid-template-rows: 70vh 125vh;

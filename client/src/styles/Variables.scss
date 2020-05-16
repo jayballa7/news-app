@@ -1,9 +1,9 @@
 $bg:#f5203c;
 
-@mixin header($rotate) {
+@mixin header($transform) {
 	text-transform: uppercase;
     // transform: translate(-50%, -50%) skew(10deg) rotate(-10deg);
-    transform: translate(-50%, -50%) skew(10deg) $rotate;
+    transform: $transform;
 	font-size: 6vw;
 	top: 10%;
 	left: 20%;
