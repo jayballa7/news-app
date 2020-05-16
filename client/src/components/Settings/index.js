@@ -14,7 +14,14 @@ function Settings() {
                         </div>
                         <div className="card__text">
                             <h1 className="card--header">Username</h1>
-                            <div className="separator"></div>
+                            <div className = "notifications">
+                                <label className="switch">
+                                <input type="checkbox"/>
+                                <span className="slider round"></span>
+                                </label>
+                                <p>Receive email notifications</p>
+                            </div>
+                            <hr></hr>
                             <div className="card--footer"><p><Link to= '/' className = "delete">Delete Account</Link></p></div>
                             <div className="card--footer"><p><Link to= '/login' className = "logout">Log Out</Link></p></div>
                         </div>
