@@ -130,9 +130,13 @@ app.get("/api/categories/:email", (req, res) => {
   .then(data => {
     
     let categories = data.replace(" ", "").split(',');
+    let limit = 10 / categories.length;
     for (let i = 0; i < categories; i++) {
-      getData(categories[i], data => {
-        userArticles.push(data);
+      getData(categories[i], articles => {
+        for (let j = 0; j < limit; j++){
+          userArticles.push(articles[j]);
+        }
+        
       })
     }
     res.send(JSON.stringify(userArticles));
