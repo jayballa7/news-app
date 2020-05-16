@@ -28,8 +28,8 @@ function Settings() {
                     </div>
 
                     <div className="categories">
-                        <div className="card__text">
-                            <h3 className="card--header">Choose 3 topics you are interested in:</h3>
+                        <div className="setting-card__text">
+                            <h3 className="setting-card--header">Choose 3 topics you are interested in:</h3>
                             <hr></hr>
                         <ul className = "checkbox">
                             <li>
@@ -100,7 +100,7 @@ function Settings() {
                                 <span className="checkmark"></span>
                                 </label>
                             </li>
-                            <input className = "save" type="submit" value="Save"/>
+                            <input className = "save-categories" type="submit" value="Save"/>
                         </ul>
                         </div>
                     </div>
