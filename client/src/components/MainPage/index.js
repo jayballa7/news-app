@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../styles/MainPage.scss';
-import Card from "../Card.js";
 import Img from "../../img/test-img.jpg"
 
 function MainPage() {
@@ -33,7 +32,6 @@ function MainPage() {
                         <h3 className="card--header">Login/Signup</h3>
                     </div>
                 </div>
-                {/* <Card boxClass = "mp-cell sidebox-2"/> */}
                 <div className="mp-cell sidebox-2">
                     <div className="card--profile">
                         <img className = "img" src={Img} alt="news-image"/>

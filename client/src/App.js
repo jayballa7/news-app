@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Members from "./components/Members";
 import MainPage from "./components/MainPage";
+import Settings from "./components/Settings";
 
 
 function App() {
@@ -14,14 +15,13 @@ function App() {
     <div className="App">
 
       <Router >
-
     
       <Route exact path="/" component={Signup} />
       <Route exact path="/login" component={Login} />
       {/* <Route exact path="/signup" component={Signup} /> */}
       <Route exact path="/memberspage" component={Members}/>
       <Route exact path="/main" component={MainPage} />
-
+      <Route exact path="/settings" component={Settings} />
 
     </Router>
 
