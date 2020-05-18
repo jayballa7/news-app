@@ -138,14 +138,81 @@ const saveArticles = (list, email) => {
   sendEmail();
 }
 
-async function sendEmail(){    let info = await transporter.sendMail({
-  from: '"News Flash " <newsflash12Hr@gmail.com>', // sender address
-  to: "newsflash12Hr@gmail.com", // list of receivers
-  bcc: "mitchgj@hotmail.com, jenn_ballard7@hotmail.com,  m.megha21@gmail.com, chrismw7579@gmail.com, ankita.kulkarni84@gmail.com",
-  subject: "Hello ✔", // Subject line
-  // text: "Thank you for using News Flash", // plain text body
-  html: "<b>Thank you for using News Flash</b> <br> <img src='https://media.giphy.com/media/KxsmofvNnJWGLs3haf/giphy.gif'></img>" // html body
-});    console.log("Message sent " + info.messageId)
+async function sendEmail(){    
+  let html = `<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>News</title>
+            <link
+                rel="stylesheet"
+                href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            />
+        </head>
+        <body>
+            <div class="container" style="background-color: black">
+                <b style="margin-right: 10px; color: #F781B0">Thank you for using NewsFlash</b><span ><a href="#" style="color:#BA2D65">Go to App</a></span> <br> 
+                <img style="width: 280px; height:260px;margin-right: 5px;" src='https://media.giphy.com/media/KxsmofvNnJWGLs3haf/giphy.gif'></img>
+                <div style="width: auto; height:80px; border-style: solid;border-color: #BA2D65; background-color:black; color:#F781B0">
+                    <p><strong>${obj.titles[0]}</strong></p>
+                    <p><a target="_blank" href=${obj.links[0]}>Read the article</a></p>
+                </div>
+
+                <div style="width: auto; height:80px; border-style: solid;border-color: #BA2D65; background-color: black;color:#F781B0">
+                <p><strong>${obj.titles[1]}</strong></p>
+                <p><a target="_blank" href=${obj.links[1]}>Read the article</a></p>
+                </div>
+
+                <div style="width: auto; height:80px; border-style: solid;border-color: #BA2D65; background-color: black;color:#F781B0">
+                <p><strong>${obj.titles[2]}</strong></p>
+                <p><a target="_blank" href=${obj.links[2]}>Read the article</a></p>
+                </div>
+
+                <div style="width: auto; height:80px; border-style: solid;border-color: #BA2D65; background-color: black;color:#F781B0">
+                <p><strong>${obj.titles[0]}</strong></p>
+                <p><a target="_blank" href=${obj.links[0]}>Read the article</a></p>
+                </div>
+
+                <div style="width: auto; height:80px; border-style: solid;border-color: #BA2D65; background-color: black;color:#F781B0">
+                <p><strong>${obj.titles[0]}</strong></p>
+                <p><a target="_blank" href=${obj.links[0]}>Read the article</a></p>
+                </div>
+
+                <div style="width: auto; height:80px; border-style: solid;border-color: #BA2D65; background-color: black; color:#F781B0">
+                <p><strong>${obj.titles[0]}</strong></p>
+                <p><a target="_blank" href=${obj.links[0]}>Read the article</a></p>
+                </div>
+
+                <div style="width: auto; height:80px; border-style: solid;border-color: #BA2D65; background-color: black;color:#F781B0">
+                <p><strong>${obj.titles[0]}</strong></p>
+                <p><a target="_blank" href=${obj.links[0]}>Read the article</a></p>
+                </div>
+
+                <div style="width: auto; height:80px; border-style: solid;border-color: #BA2D65; background-color: black;color:#F781B0">
+                <p><strong>${obj.titles[0]}</strong></p>
+                <p><a target="_blank" href=${obj.links[0]}>Read the article</a></p>
+                </div>
+                
+                <div style="width: auto; height:80px; border-style: solid;border-color: #BA2D65; background-color: black;color:#F781B0">
+                <p><strong>${obj.titles[0]}</strong></p>
+                <p><a target="_blank" href=${obj.links[0]}>Read the article</a></p>
+                </div>
+            </div>
+        </body>
+        </html>`
+    
+        let info = await transporter.sendMail({
+            from: '"News Flash " <newsflash12Hr@gmail.com>', // sender address
+            to: obj.email,
+            //bcc: obj.email,
+            subject: "Your 12Hr dose of news delivered ✔ ", // Subject line
+            // text: "Thank you for using News Flash", // plain text body
+            //html: "<b>Thank you for using News Flash</b> <br> <img src='https://media.giphy.com/media/KxsmofvNnJWGLs3haf/giphy.gif'></img>" // html body
+            html: html
+          });
+    
+        console.log("Message sent " + info.messageId)
 }
 
 module.exports = {
