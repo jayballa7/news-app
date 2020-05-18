@@ -175,29 +175,35 @@ async function sendEmail(){
                 </div>
 
                 <div style="width: auto; height:80px; border-style: solid;border-color: #BA2D65; background-color: black;color:#F781B0">
-                <p><strong>${obj.titles[0]}</strong></p>
-                <p><a target="_blank" href=${obj.links[0]}>Read the article</a></p>
+                <p><strong>${obj.titles[3]}</strong></p>
+                <p><a target="_blank" href=${obj.links[3]}>Read the article</a></p>
                 </div>
 
                 <div style="width: auto; height:80px; border-style: solid;border-color: #BA2D65; background-color: black; color:#F781B0">
-                <p><strong>${obj.titles[0]}</strong></p>
-                <p><a target="_blank" href=${obj.links[0]}>Read the article</a></p>
+                <p><strong>${obj.titles[4]}</strong></p>
+                <p><a target="_blank" href=${obj.links[4]}>Read the article</a></p>
                 </div>
 
                 <div style="width: auto; height:80px; border-style: solid;border-color: #BA2D65; background-color: black;color:#F781B0">
-                <p><strong>${obj.titles[0]}</strong></p>
-                <p><a target="_blank" href=${obj.links[0]}>Read the article</a></p>
+                <p><strong>${obj.titles[5]}</strong></p>
+                <p><a target="_blank" href=${obj.links[5]}>Read the article</a></p>
                 </div>
 
                 <div style="width: auto; height:80px; border-style: solid;border-color: #BA2D65; background-color: black;color:#F781B0">
-                <p><strong>${obj.titles[0]}</strong></p>
-                <p><a target="_blank" href=${obj.links[0]}>Read the article</a></p>
+                <p><strong>${obj.titles[6]}</strong></p>
+                <p><a target="_blank" href=${obj.links[6]}>Read the article</a></p>
                 </div>
                 
                 <div style="width: auto; height:80px; border-style: solid;border-color: #BA2D65; background-color: black;color:#F781B0">
-                <p><strong>${obj.titles[0]}</strong></p>
-                <p><a target="_blank" href=${obj.links[0]}>Read the article</a></p>
+                <p><strong>${obj.titles[7]}</strong></p>
+                <p><a target="_blank" href=${obj.links[7]}>Read the article</a></p>
                 </div>
+
+                <div style="width: auto; height:80px; border-style: solid;border-color: #BA2D65; background-color: black;color:#F781B0">
+                <p><strong>${obj.titles[8]}</strong></p>
+                <p><a target="_blank" href=${obj.links[8]}>Read the article</a></p>
+                </div>
+
             </div>
         </body>
         </html>`
