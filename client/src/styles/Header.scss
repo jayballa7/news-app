@@ -235,10 +235,14 @@
   grid-row: 5;
 }
 
-.sidebox-3 {
-  grid-column: 3 / span 2;
-  grid-row: 5;
-}
+// 	h1 {
+// 		@include header(translate(-50%, -50%) skew(10deg) rotate(-10deg));
+// 	}
+
+// .sidebox-3 {
+//   grid-column: 3 / span 2;
+//   grid-row: 5;
+// }
 
 .mdbox-1 {
   grid-column: 1 / span 2;
