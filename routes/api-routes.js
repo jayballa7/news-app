@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+const { getData } = require("./api-news");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -52,7 +53,7 @@ module.exports = function(app) {
 
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", function(req, res) {
-    // console.log("REQ>USER??",req.user)
+    console.log("REQ>USER??",req.user)
     if (!req.user) {
       // The user is not logged in, send back an empty object
       res.json({});
@@ -61,7 +62,8 @@ module.exports = function(app) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,
-        id: req.user.id
+        id: req.user.id,
+        categories:req.user.categories
       });
     }
   });
@@ -92,6 +94,87 @@ app.delete('/api/userdelete/:id',(req,res)=>{
       // location.href('/api/logout')
     });
 })
+
+app.put('/api/setcategory',function(req,res){
+
+  console.log("setcat req",req.user)
+  db.User.update({categories:req.body.data},{
+    where:{
+      id:req.user.id
+    }
+  })
+})
+
+app.put('/api/setemail',function(req,res){
+
+  console.log("setcat req",req.user)
+  db.User.update({notify:req.body.data},{
+    where:{
+      id:req.user.id
+    }
+  })
+})
+
+
+// route for getting article data based on user categories
+app.get("/api/categories/:email", (req, res) => {
+  console.log("USER CATEGORIES",req.params.email)
+  
+  db.User.findOne(
+    {
+      attributes: ['categories']
+    },
+    {
+      where: {
+        email: req.params.email
+      }
+    }
+  )
+  .then(data => {
+    let userArticles = [];
+    let counter = 0;
+    // let arr = ["Dave"];
+    // console.log(".then")
+    // console.log("output is:",data.dataValues.categories)
+    let categories = data.dataValues.categories.replace(" ", "").split(',');
+  //  console.log("Categories",categories)
+    let limit = Math.floor(10 / categories.length);
+    // console.log("limit",limit)
+    for (let i = 0; i < categories.length; i++) {
+     
+      // console.log("for loop1")
+      
+      getData(categories[i], (articles,userArticles) => {
+
+        // console.log("article",articles)
+        // console.log("Get data")
+        // console.log("categories....",categories[i].toLowerCase())
+        for (let j = 0; j < limit; j++){
+          // let obj={name:"Bob"}
+          // console.log("Inside 2")
+          console.log("counter+limit",counter,limit,i)
+          userArticles.push(articles[j]);
+          counter++;
+          if(counter === limit){
+            res.send(JSON.stringify(userArticles));
+          }
+          
+          // console.log("$$$$$",userArticles)
+        }
+
+        // console.log("userartclessss",userArticles)
+        // console.log("j",userArticles)
+        // console.log("User articles",userArticles);
+        // console.log("ARR",arr)
+      })
+      
+    }
+  //  console.log("****",arr)
+    // res.send(JSON.stringify(userArticles));
+  })
+
+})
+
 
 
 };

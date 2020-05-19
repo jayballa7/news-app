@@ -73,6 +73,7 @@ class Login extends React.Component{
                     // })
                     // update the state to redirect to home
                     this.setState({
+                        loggedIn:true,
                         redirectTo: '/memberspage'
                     })
                     console.log("Redirect:",this.state.redirectTo)
@@ -109,7 +110,7 @@ class Login extends React.Component{
                     <input type="text" name="username" id="username"/></div> */}
                     <div><label for="password">Password </label>
                     <input type="password" name="password" id="password" value={this.state.password}  onChange={this.handleChange}/></div>
-                    <div><a href="#" type = "submit" className="button1 bouncy"   onClick={this.handleSubmit}>What's New?</a></div>
+                    <div><a type = "submit" className="button1 bouncy"   onClick={this.handleSubmit}>What's New?</a></div>
                     <div><p className = "noAccount">Don't have an account? <Link to= '/signup' className = "signupLink">Sign Up</Link></p></div>
                 </form>
                 </div>

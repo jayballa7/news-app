@@ -2,8 +2,12 @@ import React from 'react';
 import axios from 'axios';
 import { Link,Redirect } from "react-router-dom";
 import '../../styles/MainPage.scss';
-import Signup from '../Signup';
-import '../../App.css'
+// import Signup from '../Signup';
+import '../../App.css';
+import MainPage from '../MainPage';
+import Img from "../../img/test-img.jpg";
+import cloneDeep from 'lodash/cloneDeep';
+import Header from '../Header.js'
 
 class Members extends React.Component{
 
@@ -12,7 +16,11 @@ class Members extends React.Component{
         this.state={
             email:null,
             uid:'',
+            categories:false,
             news:[],
+            loggedInArticles:[],
+            
+            loggedIn:false,
             APIKey:'90cf1942d9234f7f9f34095818861d62',
             redirectTo: null
         }
@@ -23,16 +31,28 @@ class Members extends React.Component{
     }
     componentDidMount(){
         this.displayName();
-        this.fillPage();
+        
     }
 
     fillPage(){
+        var titles=[]
         console.log("Fillpage")
-            if(this.state.email){
-            axios.get("https://newsapi.org/v2/sources?apiKey="+this.state.APIKey)
+        console.log("loggedIN???",this.state.loggedIn,this.state.categories)
+            if(this.state.loggedIn && this.state.categories){
+                axios.get("/api/categories/"+this.state.email)
+            // axios.get("https://newsapi.org/v2/sources?apiKey="+this.state.APIKey)
             .then(response=>{
-                console.log("Logged in res:",response);
+                response.data.map(article=>{
+                    titles.push(article.title)
+                })
+                console.log("Logged in res:",response.data,titles[0]);
+                // var deep = cloneDeep(response.data)
+                this.setState({
+                    loggedInArticles:titles
+                })
+                // },()=>{this.displayArticles()})
             })
+            
         }
        
         else{
@@ -40,11 +60,40 @@ class Members extends React.Component{
             .then(res=>{
                 console.log(res)
                 this.setState({
+                    // news:res.data.articles
                     news:res.data.articles
                 })
+                // },()=>{this.displayCommonArticles()})
             })
         }
        
+    }
+
+    // displayArticles(){
+    //     console.log("This is being hit");
+    //     console.log(this.state.loggedInArticles[0]);
+        
+    //     return(
+    //         <div>
+    //             <h1>Hi there!</h1>
+            
+    //              {this.state.loggedInArticles.map(article=>(
+    //                 <MainPage
+    //                     title={article.title}
+    //                     urlImage={article.urlToImage}
+    //                     />
+    //              ))}
+           
+           
+           
+    //     </div>
+    //     )
+    
+    // }
+    displayCommonArticles(){
+        this.state.news.map(art=>(
+            <MainPage/>
+        ))
     }
 
     logout(event) {
@@ -90,16 +139,31 @@ class Members extends React.Component{
     }
    
     displayName(){
-        // console.log("000000000000000")
+        console.log("000000000000000")
+        // console.log(this.state.loggedInArticles[0].title)
         axios.get("/api/user_data")
         .then(data=> {
             if(data.status===200){
                 console.log("OKKKKK")
+                console.log("#############################",data.data.id,data.data.categories)
+                var isLogged = true;
+                if(data.data.email===undefined){
+                     isLogged=false;
+                     console.log("USER IS NOT LOGGED")
+                }
+                var catego;
+                if(data.data.categories!==null){
+                    catego=true;
+                }
                 this.setState({
                     uid:data.data.id,
-                    email:data.data.email
+                    email:data.data.email,
+                    loggedIn:isLogged,
+                    categories:catego
                 })
+
             }
+            this.fillPage();
         // console.log("Members!",data)
         // console.log("useremail:",data.data.email);
         // console.log("userdbID:",data.data.id);
@@ -115,65 +179,42 @@ class Members extends React.Component{
     }
    
     render() {  
+        console.log("LOGGEDINARTI",this.state.loggedInArticles)
         console.log(this.state.email)
-        // if(this.state.uid!==''){
-        //     this.displayName();
-        // }
+        console.log("LOGGED",this.state.news)
         
         if (this.state.redirectTo) {
-            // return(<div>There is something to redirect</div>)
             return <Redirect to={{ pathname: this.state.redirectTo }} />
            
         }
         else{
-        // console.log("Inside members123")
+            
+            console.log("!@!@")
+            // console.log(typeof(this.state.loggedInArticles[0]))
+            // var deep = _.head(this.state.loggedInArticles);
+            // console.log(deep)
         return(
+            
             <div>
-                <nav className="navbar navbar-default">
-                    <div className="container-fluid">
-                        <div className="navbar-header">
-                        <a className="navbar-brand" href="/logout" onClick={this.logout}>
-                            Logout
-                        </a>
-                        </div>
-                </div>
-                </nav>
-                {/* <div className="container">
-                <div className="row">
-                <div className="col-md-6 col-md-offset-3">
-                <h2>Welcome {this.state.email}<span className="member-name"></span></h2>
-                    <button onClick={()=>this.handleDelete(this.state.uid)}>DELETE</button>
-                    <Link onClick={()=>this.handleDelete(this.state.uid)} to="/" >DELETE</Link>
-                </div>
-                </div>
-                </div> */}
-                
-                <div className="container">
-                <div className="mainpage">
-                    <div className="mp-cell header">
-                        <div className="mp-item">Header</div>
-                    </div>
-                    <div className="mp-cell username">
-                        <div className="mp-item">Welcome{this.state.email}</div>
-                    </div>
-                    
-                    <div className="mp-cell searchbox">
-                        <div className="mp-item">Searchbox</div>
-                    </div>
-                    <div className="mp-cell signup">
-                        <button className="mp-item" onClick={this.handleSignup}>Signup</button>
-                    </div>
-                    
-                    {
-                        this.state.news.map(article=>{
-                       
-                    })}
+                        
+                  <Header
+                  handleSignup={this.handleSignup}
+                  email={this.state.email}
+                //   title={this.state.loggedInArticles[0]}
 
-                    <div className="mp-cell ticker">
-                        <div className="mp-item">Ticker</div>
-                    </div>
-                </div>
-            </div>
+                  />
+                
+                {
+                
+                this.state.news.map((article, index)=>(
+                    
+                    <MainPage
+                    
+
+                    title={article.title}
+                    />
+                ))}
+
             </div>
         )
         }

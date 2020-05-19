@@ -4,7 +4,7 @@ import "./App.scss";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Members from "./components/Members";
-
+import Settings from './components/Settings'
 
 
 
@@ -22,6 +22,7 @@ function App() {
       <Route exact path="/memberspage" component={Members}/>
       {/* <Route exact path="/" component={Signup} /> */}
       <Route exact path="/" component={Members} />
+      <Route exact path="/settings" component={Settings}/>
 
     </Router>
 
