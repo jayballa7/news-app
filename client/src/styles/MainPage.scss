@@ -24,6 +24,7 @@
     padding: 3%;
   }
 
+
   .mp-cell {
     display: grid;
     background-color: #fff;
@@ -188,6 +189,33 @@
   grid-column: 3 / span 2;
   grid-row: 5;
 }
+
+// }
+
+// .signup {
+//   grid-column: 3 / span 2;
+//   grid-row: 2;
+// }
+
+// .sidebox-1 {
+//   grid-column: 1 / span 2;
+//   grid-row: 3;
+// }
+
+// .mainbox-1 {
+//   grid-column: 1 / span 4;
+//   grid-row: 4;
+// }
+
+// .sidebox-2 {
+//   grid-column: 1 / span 2;
+//   grid-row: 5;
+// }
+
+// .sidebox-3 {
+//   grid-column: 3 / span 2;
+//   grid-row: 5;
+// }
 
 .mdbox-1 {
   grid-column: 1 / span 2;

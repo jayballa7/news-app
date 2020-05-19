@@ -7,7 +7,8 @@ import '../../App.css';
 import MainPage from '../MainPage';
 import Img from "../../img/test-img.jpg";
 import cloneDeep from 'lodash/cloneDeep';
-import Header from '../Header.js'
+import Header from '../Header.js';
+import CardBody from "../CardBody.js";
 
 class Members extends React.Component{
 
@@ -206,11 +207,8 @@ class Members extends React.Component{
                 
                 {
                 
-                this.state.news.map((article, index)=>(
-                    
-                    <MainPage
-                    
-
+                this.state.loggedInArticles.map((article, index)=>(
+                    <CardBody
                     title={article.title}
                     />
                 ))}
