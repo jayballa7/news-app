@@ -16,7 +16,9 @@ class Signup extends Component {
 			  redirectTo: null
 
         }
+
     this.getUser = this.getUser.bind(this)
+
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
     }
