@@ -90,11 +90,11 @@ class Members extends React.Component{
     //     )
     
     // }
-    displayCommonArticles(){
-        this.state.news.map(art=>(
-            <MainPage/>
-        ))
-    }
+    // displayCommonArticles(){
+    //     this.state.news.map(art=>(
+    //         <MainPage/>
+    //     ))
+    // }
 
     logout(event) {
         event.preventDefault()
@@ -179,9 +179,10 @@ class Members extends React.Component{
     }
    
     render() {  
-        console.log("LOGGEDINARTI",this.state.loggedInArticles)
-        console.log(this.state.email)
-        console.log("LOGGED",this.state.news)
+        console.log("Redir",this.state.redirectTo)
+        // console.log("LOGGEDINARTI",this.state.loggedInArticles)
+        // console.log(this.state.email)
+        // console.log("LOGGED",this.state.news)
         
         if (this.state.redirectTo) {
             return <Redirect to={{ pathname: this.state.redirectTo }} />

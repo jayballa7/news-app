@@ -24,7 +24,6 @@ html, body {
       grid-template-areas: 
       "box1 box1 box1"
       " . box2 . ";
-    //  justify-items: center;
   }
 
 .box1 {
@@ -33,8 +32,6 @@ html, body {
 
 .box2 {
     font-weight: bold;
-    // background-image: url('../img/newspaper-background.jpg');
-    // background-size: cover;
     background-color: white;
     text-align: center;
     border: 5px solid black;

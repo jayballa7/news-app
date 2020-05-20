@@ -41,8 +41,8 @@ const getArticles = (category, limit, res) => {
     language: 'en',
     country: 'us'
       }).then(response => {
-        console.log("CATEGORIES",category)
-        console.log("response from API",response)
+        // console.log("CATEGORIES",category)
+        // console.log("response from API",response)
         
         for (let i = 0; i < limit; i++){
           userArticles.push(response.articles[i]);
