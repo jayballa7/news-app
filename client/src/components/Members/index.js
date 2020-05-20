@@ -180,7 +180,7 @@ class Members extends React.Component{
    
     render() {  
         console.log("Redir",this.state.redirectTo)
-        // console.log("LOGGEDINARTI",this.state.loggedInArticles)
+        console.log("LOGGEDINARTI",this.state.news)
         // console.log(this.state.email)
         // console.log("LOGGED",this.state.news)
         
@@ -201,6 +201,7 @@ class Members extends React.Component{
             handleSignup={this.handleSignup}
             email={this.state.email}
             loggedInArticles={this.state.loggedInArticles}
+            news={this.state.news}
           //   title={this.state.loggedInArticles[0]}
 
             />

@@ -9,6 +9,7 @@ function MainPage(props) {
     console.log("propsss",props);
     var titles=[];
     var description=[];
+
     // var article
     // props.loggedInArticles.map(article={
     //     titles=article.title
@@ -68,7 +69,21 @@ function MainPage(props) {
                    </div>
                    </div>
                 ))} 
-                    
+                
+                {props.news.map((article,index)=>(
+                <div className={"mp-cell sidebox-"+index}>
+                    <div className="card--profile">
+                        <img className = "img" src={article.urlToImage} alt="news-image1"/>
+                    </div>
+                       <div className="card__text">
+                       <h5 className="card--header">{article.title}</h5>
+                       <div className="separator"></div>
+                       <div className="card--footer"><button className="btn">Link</button></div>
+                   </div>
+                   </div>
+                ))} 
+                
+                
                 
                 {/* <div className="mp-cell sidebox-3">
                     <div className="card--profile">
