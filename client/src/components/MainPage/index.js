@@ -6,6 +6,18 @@ import '../../styles/Variables.scss';
 import { Link} from "react-router-dom";
 
 function MainPage(props) {
+    console.log("propsss",props);
+    var titles=[];
+    var description=[];
+    // var article
+    // props.loggedInArticles.map(article={
+    //     titles=article.title
+    // })
+    // console.log("titles",titles)
+    // for(var i=0;i<props.loggedInArticles.length;i++){
+    //     console.log("inside for",props.loggedInArticles[0].title)
+
+    // }
     return(
         <div className="container">
             <div className="mainpage">
@@ -20,7 +32,7 @@ function MainPage(props) {
     <h3 className="card--header">Welcome {props.email}</h3>
                     </div>
                 </div>
-                <div className="mp-cell sidebox-1">
+                <div className="mp-cell settings">
                     <div className="card__text">
                         <h3 className="card--header">Weather</h3>
                         <div><p className = "hasAccount"><Link to ='/settings' className = "settingsLink">Settings</Link></p></div>
@@ -36,17 +48,22 @@ function MainPage(props) {
                         <button className="card--header" onClick={props.handleSignup}>Login/Signup</button>
                     </div>
                 </div>
-                <div className="mp-cell sidebox-2">
+               
+                {props.loggedInArticles.map((article,index)=>(
+                <div className={"mp-cell sidebox-"+index}>
                     <div className="card--profile">
-                        <img className = "img" src={props.urlImage1} alt="news-image1"/>
+                        <img className = "img" src={article.urlToImage} alt="news-image1"/>
                     </div>
-                    <div className="card__text">
-                        <h5 className="card--header">{props.title}</h5>
-                        <div className="separator"></div>
-                        <div className="card--footer"><button className="btn">Link</button></div>
-                    </div>
-                </div>
-                <div className="mp-cell sidebox-3">
+                       <div className="card__text">
+                       <h5 className="card--header">{article.title}</h5>
+                       <div className="separator"></div>
+                       <div className="card--footer"><button className="btn">Link</button></div>
+                   </div>
+                   </div>
+                ))} 
+                    
+                
+                {/* <div className="mp-cell sidebox-3">
                     <div className="card--profile">
                         <img className = "img" src={Img} alt="news-image2"/>
                     </div>
@@ -55,18 +72,22 @@ function MainPage(props) {
                         <div className="separator"></div>
                         <div className="card--footer"><button className="btn">Link</button></div>
                     </div>
-                </div>
-                <div className="mp-cell mainbox-1">
+                </div> */}
+
+                {/* {props.loggedInArticles.map((article,index)=>(
+                <div className={"mp-cell mainbox-1"}>
                     <div className="card--profile">
                         <img className = "img" src={Img} alt="news-image3"/>
                     </div>
                     <div className="card__text">
-                    <h1 className="card--header">Lorem ipsum dolor sit amet, sed do eiusmod magna aliqua.</h1>
+                <h1 className="card--header">{article.content}</h1>
                         <div className="separator"></div>
                         <div className="card--footer"><button className="btn-2">Link</button></div>
                     </div>
                 </div>
-                <div className="mp-cell rbox-1">
+                ))}  */}
+
+                {/* <div className="mp-cell sidebox-4">
                     <div className="card--profile">
                         <img className = "img" src={Img} alt="news-image4"/>
                     </div>
@@ -76,7 +97,7 @@ function MainPage(props) {
                         <div className="card--footer"><button className="btn">Link</button></div>
                     </div>
                 </div>
-                <div className="mp-cell rbox-2">
+                <div className="mp-cell sidebox-5">
                     <div className="card--profile">
                         <img className = "img" src={Img} alt="news-image5"/>
                     </div>
@@ -86,7 +107,7 @@ function MainPage(props) {
                         <div className="card--footer"><button className="btn">Link</button></div>
                     </div>
                 </div>
-                <div className="mp-cell mdbox-1">
+                <div className="mp-cell sidebox-6">
                     <div className="card--profile">
                         <img className = "img" src={Img} alt="news-image6"/>
                     </div>
@@ -96,7 +117,7 @@ function MainPage(props) {
                         <div className="card--footer"><button className="btn">Link</button></div>
                     </div>
                 </div>
-                <div className="mp-cell mdbox-2">
+                <div className="mp-cell sidebox-7">
                     <div className="card--profile">
                         <img className = "img" src={Img} alt="news-image7"/>
                     </div>
@@ -107,6 +128,9 @@ function MainPage(props) {
                     </div>
                 </div>
                 <div className="mp-cell ticker">
+                    <div className="mp-item">Ticker</div>
+                </div> */}
+                 <div className="mp-cell ticker">
                     <div className="mp-item">Ticker</div>
                 </div>
             </div>

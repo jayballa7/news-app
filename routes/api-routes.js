@@ -1,7 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
-const { getData } = require("./api-news");
+const { getArticles } = require("./api-news");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -131,46 +131,11 @@ app.get("/api/categories/:email", (req, res) => {
     }
   )
   .then(data => {
-    let userArticles = [];
-    let counter = 0;
-    // let arr = ["Dave"];
-    // console.log(".then")
-    // console.log("output is:",data.dataValues.categories)
-    let categories = data.dataValues.categories.replace(" ", "").split(',');
-  //  console.log("Categories",categories)
-    let limit = Math.floor(10 / categories.length);
-    // console.log("limit",limit)
-    for (let i = 0; i < categories.length; i++) {
-     
-      // console.log("for loop1")
-      
-      getData(categories[i], (articles,userArticles) => {
-
-        // console.log("article",articles)
-        // console.log("Get data")
-        // console.log("categories....",categories[i].toLowerCase())
-        for (let j = 0; j < limit; j++){
-          // let obj={name:"Bob"}
-          // console.log("Inside 2")
-          console.log("counter+limit",counter,limit,i)
-          userArticles.push(articles[j]);
-          counter++;
-          if(counter === limit){
-            res.send(JSON.stringify(userArticles));
-          }
-          
-          // console.log("$$$$$",userArticles)
-        }
-
-        // console.log("userartclessss",userArticles)
-        // console.log("j",userArticles)
-        // console.log("User articles",userArticles);
-        // console.log("ARR",arr)
-      })
-      
-    }
-  //  console.log("****",arr)
-    // res.send(JSON.stringify(userArticles));
+      let categories = data.dataValues.categories.replace(" ", "").split(',');
+      let limit = Math.floor(10 / categories.length);
+      for (let i = 0; i < categories.length; i++) {
+        getArticles(categories[i], limit,res);
+      }
   })
 
 })

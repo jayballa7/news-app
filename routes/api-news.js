@@ -9,6 +9,7 @@ const hour = minute * 60;
 const hours = 12 * hour;
 let linkLimit = 3;
 // let lastDate = 0;
+let userArticles=[];
 
 const nodemailer = require("nodemailer");let transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -28,7 +29,29 @@ const getData = (category, cb) => {
     language: 'en',
     country: 'us'
       }).then(response => {
+        // console.log("Before call back",response)
         cb(response.articles,list)
+      });
+}
+const getArticles = (category, limit, res) => {
+  console.log('getArticles');
+  newsapi.v2.topHeadlines({
+    // q: query,
+    category: category,
+    language: 'en',
+    country: 'us'
+      }).then(response => {
+        console.log("CATEGORIES",category)
+        console.log("response from API",response)
+        
+        for (let i = 0; i < limit; i++){
+          userArticles.push(response.articles[i]);
+        }
+        if (userArticles.length >= 9) {
+          // console.log(userArticles);
+          res.send(JSON.stringify(userArticles));
+          userArticles = [];
+        }
       });
 }
 
@@ -151,5 +174,5 @@ async function sendEmail(){    let info = await transporter.sendMail({
 module.exports = {
   getNews,
   stopNews,
-  getData
+  getArticles
 }

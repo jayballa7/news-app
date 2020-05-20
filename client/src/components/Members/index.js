@@ -42,13 +42,13 @@ class Members extends React.Component{
                 axios.get("/api/categories/"+this.state.email)
             // axios.get("https://newsapi.org/v2/sources?apiKey="+this.state.APIKey)
             .then(response=>{
-                response.data.map(article=>{
-                    titles.push(article.title)
-                })
-                console.log("Logged in res:",response.data,titles[0]);
+                // response.data.map(article=>{
+                //     titles.push(article.title)
+                // })
+                console.log("Logged in res:",response.data);
                 // var deep = cloneDeep(response.data)
                 this.setState({
-                    loggedInArticles:titles
+                    loggedInArticles:response.data
                 })
                 // },()=>{this.displayArticles()})
             })
@@ -194,28 +194,28 @@ class Members extends React.Component{
             // var deep = _.head(this.state.loggedInArticles);
             // console.log(deep)
         return(
-            
             <div>
                         
-                  <Header
-                  handleSignup={this.handleSignup}
-                  email={this.state.email}
-                //   title={this.state.loggedInArticles[0]}
+            <MainPage
+            handleSignup={this.handleSignup}
+            email={this.state.email}
+            loggedInArticles={this.state.loggedInArticles}
+          //   title={this.state.loggedInArticles[0]}
 
-                  />
-                
-                {
-                
-                this.state.news.map((article, index)=>(
-                    
-                    <MainPage
-                    
+            />
+          
+          {/* {
+          
+          this.state.loggedInArticles.map((article, index)=>(
+              
+              
+              <MainPage
+              title={article.title}
+              />
+          ))} */}
 
-                    title={article.title}
-                    />
-                ))}
+      </div>
 
-            </div>
         )
         }
     }
