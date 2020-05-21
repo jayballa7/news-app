@@ -34,6 +34,30 @@ module.exports = function(app) {
       });
   });
 
+  // route for saving an article
+  app.post("/api/save_article", function(req, res) {
+    db.savedArticles.create({
+      email: req.body.email,
+      link: req.body.link,
+      saved: true
+    })
+      .catch(function(err) {
+        res.status(401).json(err);
+      });
+  });
+
+  // route for retrieving saved articles for any user
+  app.get("/api/get_saved_articles", function (req, res) {
+    db.savedArticles.findAll( {
+      where: {
+        email: req.body.email
+      }
+    })
+    .then(function (results) {
+      res.json(results);
+    })
+  })
+
   // // Route for logging user out
   // app.get("/api/logout", function(req, res) {
   //   console.log("Inside logout###")
