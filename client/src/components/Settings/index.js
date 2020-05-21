@@ -136,6 +136,17 @@ class Settings extends React.Component{
           ]
         }
       }
+
+      componentDidMount(){
+        this.retrieveData();
+      }
+
+      retrieveData(){
+        axios.get('/api/settings')
+        .then(response=>{
+          console.log("Data retrieved settings is:",response)
+        })
+      }
     
       handleCheckChildElement = (event) => {
           

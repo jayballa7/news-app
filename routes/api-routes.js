@@ -115,6 +115,9 @@ app.put('/api/setemail',function(req,res){
   })
 })
 
+app.get('/api/settings',function(req,res){
+  
+})
 
 // route for getting article data based on user categories
 app.get("/api/categories/:email", (req, res) => {
