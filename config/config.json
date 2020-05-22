@@ -2,9 +2,9 @@
   "development": {
     "username": "root",
 
-    "password": "rootpass",
+    "password": "password123",
 
-    "database": "mern",
+    "database": "newsflash",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

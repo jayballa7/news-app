@@ -4,6 +4,7 @@ import '../../styles/MainPage.scss';
 import Img from "../../img/test-img.jpg";
 import '../../styles/Variables.scss';
 import { Link} from "react-router-dom";
+import Ticker from "../Ticker.js";
 
 function MainPage(props) {
     console.log("propsss",props);
@@ -53,6 +54,7 @@ function MainPage(props) {
 
                         <button className="card--header" onClick={props.handleSignup}>Login/Signup</button>
                         <div><p className = "hasAccount"><Link to ='/settings' className = "settingsLink">Settings</Link></p></div>
+                        <button className="card--header" onClick={props.logout}>Logout</button>
 
                     </div>
                 </div>
@@ -206,8 +208,9 @@ function MainPage(props) {
                 <div className="mp-cell ticker">
                     <div className="mp-item">Ticker</div>
                 </div> */}
-                 <div className="mp-cell ticker">
-                    <div className="mp-item">Ticker</div>
+                 <div className="ticker-cell ticker">
+                    {/* <div className="mp-item">Ticker</div> */}
+                    <Ticker />
                 </div>
             </div>
             </div>

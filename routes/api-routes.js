@@ -69,7 +69,7 @@ module.exports = function(app) {
   });
 
   app.get('/api/user/', (req, res, next) => {
-    console.log(req.user)
+    // console.log(req.user)
     if (req.user) {
         res.json({ user: req.user })
     } else {

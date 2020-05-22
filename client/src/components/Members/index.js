@@ -8,9 +8,7 @@ import MainPage from '../MainPage';
 import Img from "../../img/test-img.jpg";
 import cloneDeep from 'lodash/cloneDeep';
 import Header from '../Header.js'
-
 class Members extends React.Component{
-
     constructor() {
         super()
         this.state={
@@ -19,21 +17,19 @@ class Members extends React.Component{
             categories:false,
             news:[],
             loggedInArticles:[],
-            
             loggedIn:false,
             APIKey:'90cf1942d9234f7f9f34095818861d62',
+            // APIKey:'75d12e4aed504da3878657856f888232',
             redirectTo: null
         }
-        this.logout = this.logout.bind(this)
+        // this.logout = this.logout.bind(this)
         this.displayName=this.displayName.bind(this)
         this.fillPage=this.fillPage.bind(this)
         this.handleSignup = this.handleSignup.bind(this)
     }
     componentDidMount(){
         this.displayName();
-        
     }
-
     fillPage(){
         var titles=[]
         console.log("Fillpage")
@@ -52,9 +48,7 @@ class Members extends React.Component{
                 })
                 // },()=>{this.displayArticles()})
             })
-            
         }
-       
         else{
             axios.get("https://newsapi.org/v2/top-headlines?country=us&apiKey="+this.state.APIKey)
             .then(res=>{
@@ -66,78 +60,63 @@ class Members extends React.Component{
                 // },()=>{this.displayCommonArticles()})
             })
         }
-       
     }
-
     // displayArticles(){
     //     console.log("This is being hit");
     //     console.log(this.state.loggedInArticles[0]);
-        
     //     return(
     //         <div>
     //             <h1>Hi there!</h1>
-            
     //              {this.state.loggedInArticles.map(article=>(
     //                 <MainPage
     //                     title={article.title}
     //                     urlImage={article.urlToImage}
     //                     />
     //              ))}
-           
-           
-           
     //     </div>
     //     )
-    
     // }
     // displayCommonArticles(){
     //     this.state.news.map(art=>(
     //         <MainPage/>
     //     ))
     // }
-
-    logout(event) {
-        event.preventDefault()
-        // console.log('logging out')
-        axios.post('/api/logout').then(response => {
-          console.log(response.data)
-          if (response.status === 200) {
-            this.setState({
-                email:null,
-                uid:'',
-              redirectTo:'/'
-            })
-          }
-        }).catch(error => {
-            console.log('Logout error')
-        })
-      }
-
-    handleDelete(id){
-
-        console.log("Reached handledelete")
-
-        axios.delete('/api/userdelete/'+id)
-        .then(response=>{
-            console.log("delete response is:",response)
-            this.setState({
-                // uid:'',
-                // email:'',
-                redirectTo:'/'
-              },()=>console.log("State set"))
-            // this.logout()
-        })
-        .catch(err=>console.log(err))
-      
-    }
-
+    // logout(event) {
+    //     event.preventDefault()
+    //     // console.log('logging out')
+    //     axios.post('/api/logout').then(response => {
+    //       console.log(response.data)
+    //       if (response.status === 200) {
+    //         this.setState({
+    //             email:null,
+    //             uid:'',
+    //           redirectTo:'/'
+    //         })
+    //       }
+    //     }).catch(error => {
+    //         console.log('Logout error')
+    //     })
+    //   }
+    // handleDelete(id){
+    //     console.log("Reached handledelete")
+    //     axios.delete('/api/userdelete/'+id)
+    //     .then(response=>{
+    //         console.log("delete response is:",response)
+    //         this.setState({
+    //             // uid:'',
+    //             // email:'',
+    //             redirectTo:'/'
+    //           },()=>console.log("State set"))
+    //         // this.logout()
+    //     })
+    //     .catch(err=>console.log(err))
+    // }
     handleSignup(){
         console.log("Clicked Me")
         this.setState({
             redirectTo:'/signup'
         })
     }
-   
     displayName(){
         console.log("000000000000000")
         // console.log(this.state.loggedInArticles[0].title)
@@ -161,67 +140,50 @@ class Members extends React.Component{
                     loggedIn:isLogged,
                     categories:catego
                 })
-
             }
             this.fillPage();
         // console.log("Members!",data)
         // console.log("useremail:",data.data.email);
         // console.log("userdbID:",data.data.id);
     //    userid=data.data.id;
-          
         // $(".member-name").text(data.email);
       })
       .catch(
           err=>console.log(err)
       )
-      
-      
     }
-   
     render() {  
         console.log("Redir",this.state.redirectTo)
         console.log("LOGGEDINARTI",this.state.news)
         // console.log(this.state.email)
         // console.log("LOGGED",this.state.news)
-        
         if (this.state.redirectTo) {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
-           
         }
         else{
-            
             console.log("!@!@")
             // console.log(typeof(this.state.loggedInArticles[0]))
             // var deep = _.head(this.state.loggedInArticles);
             // console.log(deep)
         return(
             <div>
-                        
             <MainPage
             handleSignup={this.handleSignup}
             email={this.state.email}
             loggedInArticles={this.state.loggedInArticles}
             news={this.state.news}
           //   title={this.state.loggedInArticles[0]}
-
             />
-          
           {/* {
-          
           this.state.loggedInArticles.map((article, index)=>(
-              
-              
               <MainPage
               title={article.title}
               />
           ))} */}
-
       </div>
-
         )
         }
     }
 }
-
 export default Members;
 

@@ -3,6 +3,7 @@ var db = require("../models");
 
 
 const newsapi = new NewsAPI('75d12e4aed504da3878657856f888232');
+// const newsapi = new NewsAPI('92302109da5b4d47ac950448850b10c6');
 const seconds = 1000;
 const minute = 60 * seconds;
 const hour = minute * 60;
@@ -49,8 +50,10 @@ const getArticles = (category, limit, res) => {
         }
         if (userArticles.length >= 9) {
           // console.log(userArticles);
-          res.send(JSON.stringify(userArticles));
           userArticles = [];
+          res.send(JSON.stringify(userArticles));
+          console.log(userArticles);
+          // console.log(userArticles);
         }
       });
 }
