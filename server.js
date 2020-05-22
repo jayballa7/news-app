@@ -37,6 +37,6 @@ app.get("*", (req, res) => {
 db.sequelize.sync().then(function() {
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
-  getNews();
+  // getNews();
 });
 });

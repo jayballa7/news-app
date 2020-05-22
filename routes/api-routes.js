@@ -1,7 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
-const { getData } = require("./api-news");
+const { getArticles } = require("./api-news");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -116,8 +116,8 @@ app.post('/api/user/:id', (req, res) => {
 
 // route for getting article data based on user categories
 app.get("/api/categories/:email", (req, res) => {
-  const userArticles = [];
-  db.User.findAll(
+  
+  db.User.findOne(
     {
       attributes: ['categories']
     },
@@ -128,18 +128,12 @@ app.get("/api/categories/:email", (req, res) => {
     }
   )
   .then(data => {
-    
-    let categories = data.replace(" ", "").split(',');
-    let limit = 10 / categories.length;
-    for (let i = 0; i < categories; i++) {
-      getData(categories[i], articles => {
-        for (let j = 0; j < limit; j++){
-          userArticles.push(articles[j]);
-        }
-        
-      })
+    let categories = data.dataValues.categories.replace(" ", "").split(',');
+    let limit = Math.floor(10 / categories.length);
+    for (let i = 0; i < categories.length; i++) {
+      getArticles(categories[i], limit,res);
     }
-    res.send(JSON.stringify(userArticles));
+    
   })
 })
 
