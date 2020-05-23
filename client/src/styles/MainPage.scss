@@ -28,8 +28,13 @@
   .mp-cell {
     display: grid;
     background-color: #fff;
-    border: 4px solid black;
+    border: 4px solid #e007aa;
     padding: 2%;
+  }
+
+  .s-cell {
+    display: grid;
+    padding: 1%;
   }
   
 
@@ -62,7 +67,7 @@
       margin-top: 10px;
     }
   .btn {
-    background-color: #FEE005;
+    background-color: black;
     width: 70%;
     color: white;
     border: transparent;
@@ -70,7 +75,7 @@
     font-size: 1rem;
   }
   .btn-2 {
-    background-color: #FEE005;
+    background-color: black;
     width: 40%;
     color: white;
     border: transparent;
@@ -109,10 +114,6 @@
   grid-row: 2;
 }
 
-// .sidebox-1 {
-//   grid-column: 1;
-//   grid-row: 2;
-// }
 
 .sidebox-1 {
     grid-column: 1;
@@ -190,14 +191,20 @@
 }
 
 @media screen and (max-width: 575.98px) {
+
+  .mp-cell {
+    border: 1px solid #e007aa;
+  }
+
  .card {
-  gap: 0;
+  gap: 0.5em;
   grid-template-columns: repeat(4, minmax(50px, 1fr));
   grid-template-rows: 18vh 9vh 18vh 10vh minmax(10px, 1fr) 40vh 40vh 40vh 40vh 40vh 40vh 40vh;
  }
 
 
  .header {
+  border: 2px solid white;
   grid-column: 1 / span 4;
   grid-row: 1;
 }
@@ -219,6 +226,8 @@
 }
 
 .searchbox {
+  // border: none;
+  // background-color: transparent;
   grid-column: 1 / span 4;
   grid-row: 4;
 }

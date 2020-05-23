@@ -6,6 +6,7 @@ import '../../styles/Variables.scss';
 import { Link} from "react-router-dom";
 import Ticker from "../Ticker.js";
 import Logo from "../Logo.js";
+import Searchbox from "../Searchbox.js";
 
 function MainPage(props) {
     // console.log("propsss",props);
@@ -41,10 +42,8 @@ function MainPage(props) {
                        
                     </div>
                 </div>
-                <div className="mp-cell searchbox">
-                <div className="card__text">
-                        <h3 className="card--header">Searchbox</h3>
-                    </div>
+                <div className="s-cell searchbox">
+                        <Searchbox />
                 </div>
                 <div className="mp-cell signup">
                 <div className="card__text">

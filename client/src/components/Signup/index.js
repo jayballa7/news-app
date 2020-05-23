@@ -104,8 +104,8 @@ render() {
                 <h2 className = "signupHeading">Sign Up</h2>
                 <div><label for="email">Enter your email: </label>
                 <input type="text" name="email" id="email" value={this.state.email} onChange={this.handleChange}/></div>
-                <div><label for="username">Choose a username:</label>
-                <input type="text" name="username" id="username"/></div>
+                {/* <div><label for="username">Choose a username:</label>
+                <input type="text" name="username" id="username"/></div> */}
                 <div><label for="password">Choose a password:</label>
                 <input type="password" name="password" id="password" value={this.state.password} onChange={this.handleChange}/></div>
                 <div><a href="#" type = "submit" className="button1 bouncy" onClick={this.handleSubmit}>Sign Up</a></div>
