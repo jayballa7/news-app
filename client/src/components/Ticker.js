@@ -1,15 +1,22 @@
 import React from 'react';
 import '../styles/Ticker.scss';
+import quotes from '../quotes.json';
 
 function Ticker() {
     return(
 		<div className="tcontainer">
 		<div className="ticker-wrap">
 			<div className="ticker-move">
-				<div className="ticker-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-				<div className="ticker-item">Aliquam consequat varius consequat.</div>
-				<div className="ticker-item">Fusce dapibus turpis vel nisi malesuada sollicitudin.</div>
-				<div className="ticker-item">Pellentesque auctor molestie orci ut blandit.</div>
+				<div className="ticker-item">{quotes[Math.floor(Math.random() * 1643)].text}</div>
+				<div className="ticker-item">{quotes[Math.floor(Math.random() * 1643)].text}</div>
+				<div className="ticker-item">{quotes[Math.floor(Math.random() * 1643)].text}</div>
+				<div className="ticker-item">{quotes[Math.floor(Math.random() * 1643)].text}</div>
+				<div className="ticker-item">{quotes[Math.floor(Math.random() * 1643)].text}</div>
+				{/* <div className="ticker-item">{quotes[Math.floor(Math.random() * 1643)].text}</div>
+				<div className="ticker-item">{quotes[Math.floor(Math.random() * 1643)].text}</div>
+				<div className="ticker-item">{quotes[Math.floor(Math.random() * 1643)].text}</div>
+				<div className="ticker-item">{quotes[Math.floor(Math.random() * 1643)].text}</div>
+				<div className="ticker-item">{quotes[Math.floor(Math.random() * 1643)].text}</div> */}
 			</div>
 		</div>
 		</div>

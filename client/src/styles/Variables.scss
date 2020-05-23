@@ -1,4 +1,6 @@
 $bg:#f5203c;
+$pinkbg: #f781b0;
+
 @mixin header($transform) {
     text-transform: uppercase;
     // transform: translate(-50%, -50%) skew(10deg) rotate(-10deg);

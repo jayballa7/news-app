@@ -7,6 +7,7 @@ import { Link} from "react-router-dom";
 import Ticker from "../Ticker.js";
 import Logo from "../Logo.js";
 import Searchbox from "../Searchbox.js";
+import Weather from "../Weather.js";
 
 function MainPage(props) {
     // console.log("propsss",props);
@@ -36,10 +37,9 @@ function MainPage(props) {
 
                     </div>
                 </div>
-                <div className="mp-cell settings">
+                <div className="mp-cell weather-box">
                     <div className="card__text">
-                        <h3 className="card--header">Weather</h3>
-                       
+                        <Weather />
                     </div>
                 </div>
                 <div className="s-cell searchbox">

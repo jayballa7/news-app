@@ -43,7 +43,7 @@
   display:grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-template-rows: 20vh 20vh repeat(3, minmax(100px, 1fr));
+  grid-template-rows: 23vh 30vh repeat(3, minmax(100px, 1fr));
   img {
     width: 100%;
     object-fit: cover;
@@ -93,6 +93,9 @@
 .header {
   background-color: black;
   border: 3px solid white;
+  box-shadow:  
+     1px -1px #e007aa,
+    -2px 2px #e007aa;
   grid-column: 1 / span 4;
 }
 
@@ -102,6 +105,7 @@
 }
 
 .searchbox {
+  margin-top: 5%;
   grid-column: 2 / span 3;
 }
 
@@ -109,7 +113,7 @@
   grid-column: 5 / span 1;
 }
 
-.settings {
+.weather-box {
   grid-column: 1;
   grid-row: 2;
 }
@@ -220,7 +224,7 @@
   grid-row: 3;
 }
 
-.settings {
+.weather-box {
   grid-column: 3 / span 2;
   grid-row: 3;
 }
