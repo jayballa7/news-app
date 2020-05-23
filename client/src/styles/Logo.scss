@@ -105,3 +105,10 @@ span {
 	font-family:'Rig Bold Inline'; 
 	src:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/Rig-BoldInline.otf');
 }
+
+@media screen and (max-width: 575.98px) {
+    .logo {
+        left: 50%;
+        font-size: 10vw;
+    }
+}
