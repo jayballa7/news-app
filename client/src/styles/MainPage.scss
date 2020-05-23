@@ -38,8 +38,7 @@
   display:grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-template-rows: 20vh 20vh repeat(2, minmax(100px, 1fr)) 20vh;
-  // grid-template-rows: 20vh 30vh repeat(2, minmax(100px, 1fr)) 20vh;
+  grid-template-rows: 20vh 20vh repeat(3, minmax(100px, 1fr));
   img {
     width: 100%;
     object-fit: cover;
@@ -153,6 +152,32 @@
   grid-column: 5;
   grid-row: 3;
 }
+
+.sidebox-8{
+  grid-column: 1;
+  grid-row: 5;
+}
+
+.sidebox-9{
+  grid-column: 2;
+  grid-row: 5;
+}
+
+.sidebox-10{
+  grid-column: 3;
+  grid-row: 5;
+}
+
+.sidebox-11{
+  grid-column: 4;
+  grid-row: 5;
+}
+
+.sidebox-12{
+  grid-column: 5;
+  grid-row: 5;
+}
+
 
 // .sidebox-8{
 //   grid-column: 5;

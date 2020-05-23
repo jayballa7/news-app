@@ -56,6 +56,7 @@ html, body {
 
   #email {
     @include inputStyle();
+    text-align: left;
     &:hover {
         background-color: lightpink;
     }
@@ -65,15 +66,9 @@ html, body {
   padding-right: 24px;
 }
 
-  // #username {
-  //   @include inputStyle();
-  //   &:hover {
-  //       background-color: lightpink;
-  //   }
-  // }
-
   #password {
     @include inputStyle();
+    text-align: left;
     &:hover {
         background-color: lightpink;
     }
