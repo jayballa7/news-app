@@ -2,22 +2,18 @@
 var db = require("../models");
 var passport = require("../config/passport");
 const { getArticles } = require("./api-news");
-
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
-  
   app.post("/api/login",function (req, res, next) {
-    console.log('routes/user.js, login, req.body: ');
-    console.log(req.body)
+    // console.log('routes/user.js, login, req.body: ');
+    // console.log(req.body)
     next()
 }, passport.authenticate("local"), function(req, res) {
     // console.log("SENDING BACK",req)
     res.json(req.user);
-  
   });
-
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
@@ -33,51 +29,25 @@ module.exports = function(app) {
         res.status(401).json(err);
       });
   });
-
-  // route for saving an article
-  app.post("/api/save_article", function(req, res) {
-    db.savedArticles.create({
-      email: req.body.email,
-      link: req.body.link,
-      saved: true
-    })
-      .catch(function(err) {
-        res.status(401).json(err);
-      });
-  });
-
-  // route for retrieving saved articles for any user
-  app.get("/api/get_saved_articles", function (req, res) {
-    db.savedArticles.findAll( {
-      where: {
-        email: req.body.email
-      }
-    })
-    .then(function (results) {
-      res.json(results);
-    })
-  })
-
   // // Route for logging user out
   // app.get("/api/logout", function(req, res) {
   //   console.log("Inside logout###")
   //   req.logout();
   //   res.redirect("/");
   // });
-
   app.post('/api/logout', (req, res) => {
-    console.log("LOGOUTTTT")
+    // console.log("LOGOUTTTT")
     if (req.user) {
-        req.logout()
+        req.logout();
+        // console.log("Logout response is: ",res)
         res.send({ msg: 'logging out' })
     } else {
         res.send({ msg: 'no user to log out' })
     }
 })
-
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", function(req, res) {
-    console.log("REQ>USER??",req.user)
+    // console.log("REQ>USER??",req.user)
     if (!req.user) {
       // The user is not logged in, send back an empty object
       res.json({});
@@ -91,18 +61,16 @@ module.exports = function(app) {
       });
     }
   });
-
   app.get('/api/user/', (req, res, next) => {
-    console.log(req.user)
+    // console.log(req.user)
     if (req.user) {
         res.json({ user: req.user })
     } else {
         res.json({ user: null })
     }
 })
-
 app.delete('/api/userdelete/:id',(req,res)=>{
-  console.log("req id is",req.params.id);
+  // console.log("req id is",req.params.id);
     db.User.destroy({
       where:{
         id:req.params.id
@@ -118,39 +86,65 @@ app.delete('/api/userdelete/:id',(req,res)=>{
       // location.href('/api/logout')
     });
 })
-
 app.put('/api/setcategory',function(req,res){
-
-  console.log("setcat req",req.user)
+  // console.log("setcat req",req.user)
   db.User.update({categories:req.body.data},{
     where:{
       id:req.user.id
     }
   })
 })
-
 app.put('/api/setemail',function(req,res){
-
-  console.log("setcat req",req.user)
+  // console.log("setcat req",req.user)
   db.User.update({notify:req.body.data},{
     where:{
       id:req.user.id
     }
   })
 })
-
-app.get('/api/settings',function(req,res){
-
+app.get('/api/settings/:email',function(req,res){
+  console.log("EMAIL Got",req.user)
+  db.User.findOne(
+    // {
+    //   attributes: ['categories']
+    // },
+    {
+      where: {
+        // id: req.user.id
+        email:req.params.email
+      }
+    }
+  )
+  .then(response=>{
+    console.log("categories found!!!",response)
+    res.send(response);
+  })
 })
-
+// app.get('/api/settings/notification/:email',function(req,res){
+//   console.log("Inside notif email",req.params);
+//   db.User.findAll(
+//     {
+//       attributes: ['notify']
+//     },
+//     {
+//       where: {
+//         email: req.params.email
+//       }
+//     }
+//   )
+//   .then(response=>{
+//     // console.log("EMAIL&&&&",response)
+//     res.send(response);
+//   })
+// })
 // route for getting article data based on user categories
 app.get("/api/categories/:email", (req, res) => {
-  console.log("USER CATEGORIES",req.params.email)
-  
-  db.User.findOne(
-    {
-      attributes: ['categories']
-    },
+  // console.log("USER CATEGORIES",req.params.email)
+  console.log('jenn was here');
+  db.User.findAll(
+    // {
+    //   attributes: ['categories']
+    // },
     {
       where: {
         email: req.params.email
@@ -158,16 +152,26 @@ app.get("/api/categories/:email", (req, res) => {
     }
   )
   .then(data => {
-      let categories = data.dataValues.categories.replace(" ", "").split(',');
+      let categories = data[0].dataValues.categories.replace(" ", "").split(',');
+      console.log('Categories:', categories);
       let limit = Math.floor(10 / categories.length);
       for (let i = 0; i < categories.length; i++) {
         getArticles(categories[i], limit,res);
       }
   })
-
 })
-
-
-
 };
-
+// db.User.findOne(
+//   // {
+//   //   attributes: ['categories']
+//   // },
+//   {
+//     where: {
+//       email: 'test2@gmail.com'
+//     }
+//   }
+// )
+// .then(response=>{
+//   console.log("categories found!!!",response)
+//   // res.send(response);
+// })

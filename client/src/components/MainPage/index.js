@@ -1,14 +1,16 @@
 import React from 'react';
 import '../../styles/MainPage.scss';
 // import '../../styles/UserCard.scss';
-import Img from "../../img/test-img.jpg";
+// import Img from "../../img/test-img.jpg";
 import '../../styles/Variables.scss';
 import { Link} from "react-router-dom";
+import Ticker from "../Ticker.js";
+import Logo from "../Logo.js";
 
 function MainPage(props) {
-    console.log("propsss",props);
-    var titles=[];
-    var description=[];
+    // console.log("propsss",props);
+    // var titles=[];
+    // var description=[];
 
     // var article
     // props.loggedInArticles.map(article={
@@ -24,9 +26,7 @@ function MainPage(props) {
             <div className="mainpage">
             <div className="card">
                 <div className="mp-cell header">
-                    <div className="mp-item">
-                        <h1 data-heading="NewsFlash">NewsFlash</h1>
-                    </div>
+                    <Logo />
                 </div>
                 <div className="mp-cell username">
                 <div className="card__text">
@@ -37,7 +37,7 @@ function MainPage(props) {
                 </div>
                 <div className="mp-cell settings">
                     <div className="card__text">
-                        <h3 className="card--header"></h3>
+                        <h3 className="card--header">Weather</h3>
                        
                     </div>
                 </div>
@@ -83,134 +83,17 @@ function MainPage(props) {
                    </div>
                 ))} 
                 
-                
-                
-                {/* <div className="mp-cell sidebox-3">
-                    <div className="card--profile">
-
-//                         <img className = "img" src={Img} alt="news-image"/>
-//                     </div>
-//                     <div className="card__text">
-//                     <h5 className="card--header">Lorem ipsum dolor sit amet, sed do eiusmod magna aliqua.</h5>
-//                         <div class="separator"></div>
-//                         <div class="card--footer"><button class="btn">Link</button></div>
-      
-                        <img className = "img" src={Img} alt="news-image2"/>
-                    </div>
-                    <div className="card__text">
-                    <h5 className="card--header">Lorem ipsum dolor sit amet, sed do eiusmod magna aliqua.</h5>
-                        <div className="separator"></div>
-                        <div className="card--footer"><button className="btn">Link</button></div>
-
-                    </div>
+                 {/* <div className="ticker-cell ticker">
+                    <Ticker />
                 </div> */}
-
-                {/* {props.loggedInArticles.map((article,index)=>(
-                <div className={"mp-cell mainbox-1"}>
-                    <div className="card--profile">
-
-//                         <img className = "img" src={Img} alt="news-image"/>
-//                     </div>
-//                     <div className="card__text">
-//                     <h1 className="card--header">Lorem ipsum dolor sit amet, sed do eiusmod magna aliqua.</h1>
-//                         <div class="separator"></div>
-//                         <div class="card--footer"><button class="btn-2">Link</button></div>
-
-                        <img className = "img" src={Img} alt="news-image3"/>
-                    </div>
-                    <div className="card__text">
-                <h1 className="card--header">{article.content}</h1>
-                        <div className="separator"></div>
-                        <div className="card--footer"><button className="btn-2">Link</button></div>
-
-                    </div>
-                </div>
-                ))}  */}
-
-                {/* <div className="mp-cell sidebox-4">
-                    <div className="card--profile">
-
-//                         <img className = "img" src={Img} alt="news-image"/>
-//                     </div>
-//                     <div className="card__text">
-//                     <h5 className="card--header">Lorem ipsum dolor sit amet, sed do eiusmod magna aliqua.</h5>
-//                         <div class="separator"></div>
-//                         <div class="card--footer"><button class="btn">Link</button></div>
-
-                        <img className = "img" src={Img} alt="news-image4"/>
-                    </div>
-                    <div className="card__text">
-                    <h5 className="card--header">Lorem ipsum dolor sit amet, sed do eiusmod magna aliqua.</h5>
-                        <div className="separator"></div>
-                        <div className="card--footer"><button className="btn">Link</button></div>
-
-                    </div>
-                </div>
-                <div className="mp-cell sidebox-5">
-                    <div className="card--profile">
-
-//                         <img className = "img" src={Img} alt="news-image"/>
-//                     </div>
-//                     <div className="card__text">
-//                     <h5 className="card--header">Lorem ipsum dolor sit amet, sed do eiusmod magna aliqua.</h5>
-//                         <div class="separator"></div>
-//                         <div class="card--footer"><button class="btn">Link</button></div>
-
-                        <img className = "img" src={Img} alt="news-image5"/>
-                    </div>
-                    <div className="card__text">
-                    <h5 className="card--header">Lorem ipsum dolor sit amet, sed do eiusmod magna aliqua.</h5>
-                        <div className="separator"></div>
-                        <div className="card--footer"><button className="btn">Link</button></div>
-
-                    </div>
-                </div>
-                <div className="mp-cell sidebox-6">
-                    <div className="card--profile">
-
-//                         <img className = "img" src={Img} alt="news-image"/>
-//                     </div>
-//                     <div className="card__text">
-//                     <h5 className="card--header">Lorem ipsum dolor sit amet, sed do eiusmod magna aliqua.</h5>
-//                         <div class="separator"></div>
-//                         <div class="card--footer"><button class="btn">Link</button></div>
-
-                        <img className = "img" src={Img} alt="news-image6"/>
-                    </div>
-                    <div className="card__text">
-                    <h5 className="card--header">Lorem ipsum dolor sit amet, sed do eiusmod magna aliqua.</h5>
-                        <div className="separator"></div>
-                        <div className="card--footer"><button className="btn">Link</button></div>
-
-                    </div>
-                </div>
-                <div className="mp-cell sidebox-7">
-                    <div className="card--profile">
-
-//                         <img className = "img" src={Img} alt="news-image"/>
-//                     </div>
-//                     <div className="card__text">
-//                     <h5 className="card--header">Lorem ipsum dolor sit amet, sed do eiusmod magna aliqua.</h5>
-//                         <div class="separator"></div>
-//                         <div class="card--footer"><button class="btn">Link</button></div>
-
-                        <img className = "img" src={Img} alt="news-image7"/>
-                    </div>
-                    <div className="card__text">
-                    <h5 className="card--header">Lorem ipsum dolor sit amet, sed do eiusmod magna aliqua.</h5>
-                        <div className="separator"></div>
-                        <div className="card--footer"><button className="btn">Link</button></div>
-
-                    </div>
-                </div>
-                <div className="mp-cell ticker">
-                    <div className="mp-item">Ticker</div>
-                </div> */}
-                 <div className="mp-cell ticker">
-                    <div className="mp-item">Ticker</div>
-                </div>
             </div>
+
+                           
             </div>
+
+            <div className="ticker-cell ticker">
+                    <Ticker />
+                </div>
         </div>
     )
 }

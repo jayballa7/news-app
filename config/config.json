@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
 
-    "password": "rootpass",
+    "password": "password123",
 
     "database": "mern",
     "host": "127.0.0.1",

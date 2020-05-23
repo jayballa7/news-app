@@ -5,7 +5,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Members from "./components/Members";
 
-import MainPage from "./components/MainPage";
+// import MainPage from "./components/MainPage";
 import Settings from "./components/Settings";
 
 
