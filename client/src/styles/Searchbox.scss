@@ -11,26 +11,20 @@ $darkpink:#ba2d65;
 
 
 .search-articles {
-    height: 10vh;
+    height: 15vh;
     font-weight: bold;
-    padding-top: 6%;
+    font-size: 1.5em;
+    padding-top: 3%;
     background-color: white;
     border: 5px solid #e007aa;
     border-radius:10px;
-    // box-shadow:  1px -1px $pinkbg,
-    // -2px 2px $pinkbg,
-    // -3px 3px $pinkbg,
-    // -4px 4px $pinkbg,
-    // -5px 5px $pinkbg,
-    // -6px 6px $pinkbg,
-    // -7px 7px $darkpink,
-    // -8px 8px $darkpink,
-    // -9px 9px $darkpink,
-    // -10px 10px $darkpink;
 }
 
 
   #search {
+    height: 5vh;
+    padding-top: 1%;
+    margin-right: 2%;
     @include searchStyle();
     text-align: left;
     &:hover {
@@ -39,14 +33,15 @@ $darkpink:#ba2d65;
   }
 
 .search-label {
+  font-weight: bolder;
   padding-right: 24px;
 }
 
 
   .search-btn{
     display: inline-block;
+    height: 5vh;
     width: 20%;
-    margin: 0 auto;
     // margin-top: 3%;
     background-color:black;
     color: white;
@@ -65,7 +60,7 @@ $darkpink:#ba2d65;
     }
 @media all and (max-width:30em){
 .search-btn{
-    display:block;
+    width: 30%;
     margin:0.4em auto;
 }
 }

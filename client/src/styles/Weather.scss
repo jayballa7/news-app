@@ -1,12 +1,37 @@
 div.weather-div {
+    font-weight: bold;
     width: 100%;
     margin-top: -10%;
 h3 {
     font-size: 1.5em;
+    line-height: 1em;
+}
+p {
+    line-height: 1em;
 }
 img.weather-icon {
     width: 80px;
     height: 35px;
     // object-fit: cover;
 }
+}
+
+@media screen and (max-width: 575.98px) {
+    div.weather-div {
+        font-weight: bold;
+        width: 100%;
+        margin-top: -12%;
+    h3 {
+        font-size: 1.3em;
+        line-height: .8em;
+    }
+    p {
+        line-height: .8em;
+    }
+    img.weather-icon {
+        width: 60px;
+        height: 25px;
+        // object-fit: cover;
+    }
+    }
 }

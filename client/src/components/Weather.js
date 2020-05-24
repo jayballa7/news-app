@@ -11,7 +11,7 @@ class Weather extends Component {
     }
     
     APIKey = "16202c6e80fee5da38da3ef00e9cdf59";
-    cityName = "Orlando";
+    cityName = "Seattle";
 
     data = axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${this.cityName}&appid=${this.APIKey}`).then(data => {
             console.log(data);
@@ -36,8 +36,8 @@ class Weather extends Component {
                  {/* <h3>{this.cityName}</h3>
                  <img className = "weather-icon" src={this.state.iconurl} alt="Weather icon"></img> */}
                     <p>Temperature: <span>{this.state.tempInF}</span> F</p>
-                    <p>Humidity: <span>{this.state.hum}</span> %</p>
-                    <p>Wind Speed: <span>{this.state.wind}</span></p>
+                    <p>Humidity: <span>{this.state.hum}</span>%</p>
+                    <p>Wind Speed: <span>{this.state.wind}</span> mph</p>
             </div>
         )
         }

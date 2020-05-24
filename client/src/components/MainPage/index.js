@@ -44,15 +44,13 @@ function MainPage(props) {
                 </div>
                 <div className="s-cell searchbox">
                         <Searchbox />
+                        <h3 className="headlines-text">Latest Headlines</h3>
                 </div>
                 <div className="mp-cell signup">
                 <div className="card__text">
-
-                 <h3 className="card--header">Login/Signup</h3>
-
-                        <button className="card--header" onClick={props.handleSignup}>Login/Signup</button>
+                 {/* <h3 className="card--header">Login/Signup</h3> */}
+                        <button className="login-btn" onClick={props.handleSignup}>Login/Signup</button>
                         <div><p className = "hasAccount"><Link to ='/settings' className = "settingsLink">Settings</Link></p></div>
-
                     </div>
                 </div>
                

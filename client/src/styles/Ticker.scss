@@ -1,42 +1,80 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,300&display=swap');
 
 
-/* OUTER CONTAINER */
-.tcontainer {
-    width: 100%;
-    overflow: hidden; /* Hide scroll bar */
+* { box-sizing: border-box; }
+$duration: 70s;
+
+@-webkit-keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
   }
-   
-  /* MIDDLE CONTAINER */
-  .ticker-wrap {
-    width: 100%;
-    padding-left: 100%; /* Push contents to right side of screen */
-    background-color: #eee;
+
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
   }
+}
+
+@keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.ticker-wrap {
   
-  /* INNER CONTAINER */
-  @keyframes ticker {
-    0% { transform: translate3d(0, 0, 0); }
-    100% { transform: translate3d(-100%, 0, 0); }
-  }
-  .ticker-move {
-    /* Basically move items from right side of screen to left in infinite loop */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  height: 5rem;
+  background-color: black; 
+  border-top: 3px solid #f781b0;
+  color: white;
+  padding-left: 100%;
+  box-sizing: content-box;
+
+  .ticker {
+
     display: inline-block;
+    height: 4.5rem;
+    line-height: 5rem;  
     white-space: nowrap;
     padding-right: 100%;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    animation-name: ticker;
-    animation-duration: 50s;
-  }
-  .ticker-move:hover{
-    animation-play-state: paused; /* Pause scroll on mouse hover */
-  }
-  
-  /* ITEMS */
-  .ticker-item{
-    display: inline-block; /* Lay items in a horizontal line */
-    padding: 0 2rem;
+    box-sizing: content-box;
+
+    -webkit-animation-iteration-count: infinite; 
+            animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear;
+   -webkit-animation-name: ticker;
+           animation-name: ticker;
+    -webkit-animation-duration: $duration;
+            animation-duration: $duration;
+
+    &-item {
+
+      display: inline-block;
+
+      padding: 0 2rem;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 2em;
+
+    }
+
   }
+
+}
+
+body { padding-bottom: 5rem; }
+
+
