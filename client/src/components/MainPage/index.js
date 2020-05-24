@@ -47,7 +47,7 @@ function MainPage(props) {
                        <div className="card__text">
                        <h5 className="card--header">{article.title}</h5>
                        <div className="separator"></div>
-                       <div className="card--footer"><button className="btn">Link</button></div>
+                       <div className="card--footer"><button className="btn">Read</button></div>
                    </div>
                    </div>
                 ))} 

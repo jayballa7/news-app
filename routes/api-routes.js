@@ -160,6 +160,85 @@ app.get("/api/categories/:email", (req, res) => {
       }
   })
 })
+
+// route for setting toggling the articles "saved" status
+app.post('/api/user/:id', (req, res) => {
+  db.SavedArticle.update(
+    {
+      saved: true
+    },
+    {
+      where: {
+        id: req.params.id
+        // email:req.params.email,
+        // link:req.params.link
+      }
+    }
+  )
+})
+ // sends the articles the user has saved
+app.get('/api/user/saved', (req, res) => {
+  // console.log("EMAIL",db.SavedArticle,req.email)
+  db.SavedArticle.findAll(
+      {
+          where: {
+            email: req.email,
+            saved: true
+          }
+      }
+  ).then(articles => res.send(articles));
+})
+    // sends the suggested articles to the user
+    app.get('/api/user/suggested', (req, res) => {
+      console.log("saved",db.savedArticles);
+      db.SavedArticle.findAll(
+          {
+            where: {
+              email: req.user.email,
+              saved: false
+            }
+          }
+      ).then(articles => res.send(articles));
+    })// route for setting toggling the articles "saved" status
+app.post('/api/user/:id', (req, res) => {
+  db.SavedArticle.update(
+    {
+      saved: true
+    },
+    {
+      where: {
+        id: req.params.id
+        // email:req.params.email,
+        // link:req.params.link
+      }
+    }
+  )
+})
+ // sends the articles the user has saved
+app.get('/api/user/saved', (req, res) => {
+  // console.log("EMAIL",db.SavedArticle,req.email)
+  db.SavedArticle.findAll(
+      {
+          where: {
+            email: req.email,
+            saved: true
+          }
+      }
+  ).then(articles => res.send(articles));
+})
+    // sends the suggested articles to the user
+    app.get('/api/user/suggested', (req, res) => {
+      console.log("saved",db.savedArticles);
+      db.SavedArticle.findAll(
+          {
+            where: {
+              email: req.user.email,
+              saved: false
+            }
+          }
+      ).then(articles => res.send(articles));
+    })
+
 };
 // db.User.findOne(
 //   // {

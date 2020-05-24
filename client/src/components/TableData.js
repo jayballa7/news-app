@@ -6,16 +6,17 @@ function TableData(props){
         <table className="settings-table">
             <thead>
                 <tr>
-                <th scope="col">Article Title</th>
-                <th scope="col">Article Link</th>
-                <th scope="col"></th>
+                <th className = "table-heading" scope="col">Article Title</th>
+                <th className = "table-heading" scope="col">Article Link</th>
+                <th className = "table-heading" scope="col"></th>
                 </tr>
             </thead>
+            <hr className = "separate-line"></hr>
             {props.suggestedArticles.map((article,index)=>(
                 <tbody>
                 <tr>
                 <th scope="row">{article.title}</th>
-                <td>{article.link}</td>
+                <td><a>{article.link}</a></td>
                 <button data-id={article.id} onClick={props.handleSave}>Save</button>
                 </tr>
             </tbody>
