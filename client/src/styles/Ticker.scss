@@ -72,7 +72,9 @@ $duration: 70s;
     }
 
   }
-
+  .ticker:hover{
+    animation-play-state: paused; /* Pause scroll on mouse hover */
+  }
 }
 
 body { padding-bottom: 5rem; }

@@ -162,12 +162,12 @@ const saveArticles = (list, email) => {
 }
 
 async function sendEmail(){    let info = await transporter.sendMail({
-  from: '"News Flash " <newsflash12Hr@gmail.com>', // sender address
+  from: '"NewsFlash " <newsflash12Hr@gmail.com>', // sender address
   to: "newsflash12Hr@gmail.com", // list of receivers
   bcc: "mitchgj@hotmail.com, jenn_ballard7@hotmail.com,  m.megha21@gmail.com, chrismw7579@gmail.com, ankita.kulkarni84@gmail.com",
   subject: "Hello ✔", // Subject line
   // text: "Thank you for using News Flash", // plain text body
-  html: "<b>Thank you for using News Flash</b> <br> <img src='https://media.giphy.com/media/KxsmofvNnJWGLs3haf/giphy.gif'></img>" // html body
+  html: "<b>Thank you for using NewsFlash</b> <br> <img src='https://media.giphy.com/media/KxsmofvNnJWGLs3haf/giphy.gif'></img>" // html body
 });    console.log("Message sent " + info.messageId)
 }
 

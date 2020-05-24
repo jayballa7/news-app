@@ -37,7 +37,6 @@ class Members extends React.Component{
             if(this.state.loggedIn && this.state.categories){
                 axios.get("/api/categories/"+this.state.email)
             .then(response=>{
-                console.log('please work');
                 // response.data.map(article=>{
                 //     titles.push(article.title)
                 // })
@@ -51,7 +50,7 @@ class Members extends React.Component{
             })
         }
         else{
-            axios.get("https://newsapi.org/v2/top-headlines?country=us&apiKey="+this.state.APIKey)
+            axios.get("https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?country=us&apiKey="+this.state.APIKey)
             .then(res=>{
                 // console.log(res)
                 this.setState({
