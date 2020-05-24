@@ -3,12 +3,16 @@ import '../../styles/Settings.scss';
 import {Redirect, Link } from "react-router-dom";
 import Img from "../../img/profile-img.jpg";
 import  CheckBox  from '../CheckBox.js';
+import TableData from '../TableData.js';
 import axios from 'axios';
+
 class Settings extends React.Component{
+  is_Mounted =false;
     constructor(props) {
         super(props)
         this.state = {
             history:[],
+            suggestedArticles:[],
             historyString:'',
             flag:false,
             redirectTo: null,
@@ -29,22 +33,28 @@ class Settings extends React.Component{
         this.logout = this.logout.bind(this)
       }
       componentDidMount(){
+        // this.retrieveData();
+        // this.retrieveEmail();
         this.accountDetails();
       }
       accountDetails(){
           console.log("000000000000000")
+          this.is_Mounted = true;
           // console.log(this.state.loggedInArticles[0].title)
           axios.get("/api/user_data")
           .then(data=> {
               if(data.status===200){
                   console.log("account details",data.data.id,data.data.email)
-                  this.setState({
-                      uid:data.data.id,
-                      email:data.data.email
-                  },()=>{
-                    this.retrieveData();
-                    // this.retrieveEmail();
-                  })
+                  if (this.is_Mounted === true) {
+                    this.setState({
+                        uid:data.data.id,
+                        email:data.data.email,
+                    },()=>{
+                      this.retrieveData();
+                      this.displaySuggested();
+                      // this.retrieveEmail();
+                    })
+                  }
               }
         })
         .catch(
@@ -94,6 +104,34 @@ class Settings extends React.Component{
         }
         })
       }
+
+      displaySuggested(){
+        axios.get('/api/user/suggested')
+        .then(res=>{
+          console.log("Suggested",res);
+          this.setState({
+            suggestedArticles:res.data
+          })
+        })
+      }
+      handleSave(event){
+        var saveId=event.target.dataset.id;
+        console.log("handleSave:", saveId)
+        axios.post('/api/user/'+saveId)
+        .then(response=>{
+          console.log("Saved cahnged",response)
+        })
+      }
+      // retrieveEmail(){
+      //   axios.get('/api/settings/notification/'+ this.state.email)
+      //   .then(response=>{
+      //     console.log(response);
+      //     this.setState({
+      //       flag:response.data.notify
+      //     })
+      //   })
+      // }
+
       handleCheckChildElement = (event) => {
           console.log("@@@@"+event.target.checked)
         let category = this.state.category
@@ -163,8 +201,16 @@ class Settings extends React.Component{
         axios.delete('/api/userdelete/'+id)
         .then(response=>{
             console.log("delete response is:",response)
+            // this.setState({
+            //     // uid:'',
+            //     // email:'',
+            //     redirectTo:'/'
+            //   })
         })
         .catch(err=>console.log(err))
+    }
+    componentWillUnmount() {
+      this.is_Mounted=false;
     }
       render() {
         if (this.state.redirectTo) {
@@ -175,9 +221,9 @@ class Settings extends React.Component{
         return (
           <div className="App">
                 <div className="setting-container">
-            <div className="setting-page">
-                <div className="setting-card">
-                    <div className="sp-cell profile-card">
+                  <div className="setting-page">
+                    <div className="setting-card">
+                      <div className="sp-cell profile-card">
                         <div className="setting-card--profile">
                             <img className = "img" src={Img} alt="profile-photo"/>
                         </div>
@@ -202,7 +248,7 @@ class Settings extends React.Component{
             <ul>
             {
               this.state.category.map((cat, index) => {
-                return (<CheckBox key={index} handleCheckChildElement={this.handleCheckChildElement}  {...cat} />
+                return (<CheckBox className = "category" key={index} handleCheckChildElement={this.handleCheckChildElement}  {...cat} />
                     )
               })
             }
@@ -210,9 +256,25 @@ class Settings extends React.Component{
             <button type="submit" className = "save-categories" value="Save" onClick={this.handleSubmit.bind(this)}>Save</button>
           </div>
           </div>
+          <div className = "suggested-heading">
+            <h5>Suggested Articles</h5>
+          </div>
+          <div className = "go-back">
+            <h5>Go back to <Link to ='/memberspage' className = "go-link">NewsFlash--></Link></h5>
+          </div>
+          <div className="table-cell">
+            <TableData
+             suggestedArticles={this.state.suggestedArticles}
+             handleSave={this.handleSave}
+             />
+          </div>
+
                     </div>
                 </div>
+
+                
             </div>
+
         </div>
         );
       }

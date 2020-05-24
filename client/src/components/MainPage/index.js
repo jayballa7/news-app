@@ -1,7 +1,5 @@
 import React from 'react';
 import '../../styles/MainPage.scss';
-// import '../../styles/UserCard.scss';
-// import Img from "../../img/test-img.jpg";
 import '../../styles/Variables.scss';
 import { Link} from "react-router-dom";
 import Ticker from "../Ticker.js";
@@ -10,19 +8,6 @@ import Searchbox from "../Searchbox.js";
 import Weather from "../Weather.js";
 
 function MainPage(props) {
-    // console.log("propsss",props);
-    // var titles=[];
-    // var description=[];
-
-    // var article
-    // props.loggedInArticles.map(article={
-    //     titles=article.title
-    // })
-    // console.log("titles",titles)
-    // for(var i=0;i<props.loggedInArticles.length;i++){
-    //     console.log("inside for",props.loggedInArticles[0].title)
-
-    // }
     return(
         <div className="container">
             <div className="mainpage">
