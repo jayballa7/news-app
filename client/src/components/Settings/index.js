@@ -26,15 +26,15 @@ class Settings extends React.Component{
             email:null,
             uid:'',
             category: [
-                // {id: 1, value: "General", isChecked: false},
-                {id: 2, value: "Politics", isChecked: false},
-                // {id: 3, value: "Art", isChecked: false},
-                {id: 4, value: "Science", isChecked: false},
-                {id: 5, value: "Entertainment", isChecked: false},
-                {id: 6, value: "Sports", isChecked: false},
-                {id: 7, value: "Business", isChecked: false},
-                {id: 8, value: "Health", isChecked: false},
-                // {id: 9, value: "Style", isChecked: false}
+              // {id: 1, value: "General", isChecked: false},
+              {id: 1, value: "Technology", isChecked: false},
+              // {id: 3, value: "Art", isChecked: false},
+              {id: 2, value: "Science", isChecked: false},
+              {id: 3, value: "Entertainment", isChecked: false},
+              {id: 4, value: "Sports", isChecked: false},
+              {id: 5, value: "Business", isChecked: false},
+              {id: 6, value: "Health", isChecked: false},
+              // {id: 9, value: "Style", isChecked: false}
           ]
         }
         this.logout = this.logout.bind(this)
@@ -109,13 +109,13 @@ class Settings extends React.Component{
           this.setState({
             category : [
               // {id: 1, value: "General", isChecked: false},
-              {id: 2, value: "Technology", isChecked: false},
+              {id: 1, value: "Technology", isChecked: false},
               // {id: 3, value: "Art", isChecked: false},
-              {id: 4, value: "Science", isChecked: false},
-              {id: 5, value: "Entertainment", isChecked: false},
-              {id: 6, value: "Sports", isChecked: false},
-              {id: 7, value: "Business", isChecked: false},
-              {id: 8, value: "Health", isChecked: false},
+              {id: 2, value: "Science", isChecked: false},
+              {id: 3, value: "Entertainment", isChecked: false},
+              {id: 4, value: "Sports", isChecked: false},
+              {id: 5, value: "Business", isChecked: false},
+              {id: 6, value: "Health", isChecked: false},
               // {id: 9, value: "Style", isChecked: false}
 
         ]

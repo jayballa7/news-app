@@ -1,4 +1,6 @@
 import React from 'react';
+import '../styles/TableSavedArticles.scss';
+
 
 function TableSavedArticles(props){
     
@@ -7,19 +9,16 @@ function TableSavedArticles(props){
             <thead>
                 <tr>
                 <th className = "table-heading" scope="col">Article Title</th>
-                <th className = "table-heading" scope="col">Article Link</th>
-                
                 </tr>
             </thead>
-            <hr className = "separate-line"></hr>
             {props.savedArticles.map((article,index)=>(
                 <tbody>
+                <hr className = "separate-line2"></hr>
                 <tr> 
                 <th className = "table-row" scope="row">{article.title}</th>
-                <td className = "table-row"><a href={article.link} target="_blank">Read More</a></td>
+                <td className = "table-row"><a className = "more" href={article.link} target="_blank">Read</a></td>
                 {/* <button data-id={article.id} onClick={props.handleSave}>Save</button> */}
                 </tr>
-                <hr className = "separate-line"></hr>
             </tbody>
             ))}
             

@@ -5,7 +5,7 @@ function Searchbox() {
     return(
         <div>
             <form className="search-articles">
-                <div><label for="searchbox">Search articles: </label>
+                <div><label htmlFor="searchbox">Search articles: </label>
                 <input type="text" name="search" id="search"/>
                 <span><a href="#" type = "submit" className="search-btn">Search</a></span></div>
             </form>

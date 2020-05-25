@@ -23,14 +23,10 @@ function MainPage(props) {
             </div>
         </div>;
       } else {
-        loginButton = <div className="mp-cell signup">
+        loginButton = <div className="mp-cell login-cell">
         <div className="card__text">
-            <h3 className="card--header">Login/Signup</h3>
-
-                <button className="card--header" onClick={props.handleSignup}>Login/Signup</button>
-               
-                {/* <button onClick={props.logout}>Logout</button> */}
-
+        {/* <h3 className="card--header">The News You Want</h3> */}
+                <button className="login-btn" onClick={props.handleSignup}>Login/Signup</button>
             </div>
         </div>;
       }
@@ -79,7 +75,7 @@ function MainPage(props) {
                        <h5 className="card--header">{article.title}</h5>
                        <div className="separator"></div> 
                        <div className="card--footer"><button className="btn"><a href = {article.url} target = "_blank" style ={{textDecoration:"none", color: "white"}}>Read</a></button></div>
-                       <div className="card--footer"><button className="btn" data-title={article.title} data-link={article.url} onClick={props.handleSaveClick} >Save</button></div>
+                       <div className="card--footer"><button className="save-button" data-title={article.title} data-link={article.url} onClick={props.handleSaveClick} >Save for Later</button></div>
                    </div>
                    </div>
                 ))} 
@@ -96,18 +92,13 @@ function MainPage(props) {
                    </div>
                    </div>
                 ))} 
-                
-                 {/* <div className="ticker-cell ticker">
-                    <Ticker />
-                </div> */}
             </div>
-
-                           
             </div>
 
             <div className="ticker-cell ticker">
                     <Ticker />
-                </div>
+            </div>
+
         </div>
     )
 }

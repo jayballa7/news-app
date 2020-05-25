@@ -11,15 +11,14 @@ function TableData(props){
                 <th className = "table-heading" scope="col"></th>
                 </tr>
             </thead>
-            <hr className = "separate-line"></hr>
             {props.suggestedArticles.map((article,index)=>(
                 <tbody>
+                <hr className = "separate-line"></hr>
                 <tr>
                 <th className = "table-row" scope="row">{article.title}</th>
-                <td className = "table-row"><a>{article.link}</a></td>
+                <td className = "table-row"><a href={article.link} target="_blank">{article.link}</a></td>
                 <button className = "sugg-btn" data-id={article.id} onClick={props.handleSave}>Save</button>
                 </tr>
-                <hr className = "separate-line"></hr>
             </tbody>
             ))}
         </table>

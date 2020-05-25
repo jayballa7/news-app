@@ -18,8 +18,7 @@ class Members extends React.Component{
             news:[],
             loggedInArticles:[],
             loggedIn:false,
-            APIKey:'90cf1942d9234f7f9f34095818861d62',
-            // APIKey:'75d12e4aed504da3878657856f888232',
+            APIKey:'ea25551a0dd04cda9c50a68ac77e6940',
             redirectTo: null
         }
         // this.logout = this.logout.bind(this)

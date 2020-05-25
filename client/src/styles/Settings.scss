@@ -230,16 +230,16 @@ html, body {
     border-radius: 10px;
     padding: 2%;
     margin-left: 3%;
-    margin-top: -8%;
+    margin-top: -10%;
     background-color: #fff;
     border: 4px solid #059AEB;
     grid-column: 1;
     grid-row: 4;
   }
 
-  .separate-line {
-    width: 200%;
-  }
+  // .separate-line {
+  //   width: 200%;
+  // }
 
 .suggested-heading {
   color: #0867bf;
@@ -273,9 +273,11 @@ html, body {
   background-color: #fff;
   border: 4px solid #059AEB;
   border-radius: 10px;
-  padding: 2%;
+  padding: 5%;
+  padding-top: 2%;
+  padding-right: 8%;
   margin-top: -8%;
-  margin-left: 3%;
+  margin-left: 5%;
   grid-column: 2;
   grid-row: 4;
 }
