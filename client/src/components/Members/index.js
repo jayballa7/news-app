@@ -22,9 +22,10 @@ class Members extends React.Component{
             
             loggedIn:false,
             APIKey:'90cf1942d9234f7f9f34095818861d62',
+            // APIKey:'75d12e4aed504da3878657856f888232',
             redirectTo: null
         }
-        this.logout = this.logout.bind(this)
+        // this.logout = this.logout.bind(this)
         this.displayName=this.displayName.bind(this)
         this.fillPage=this.fillPage.bind(this)
         this.handleSignup = this.handleSignup.bind(this)
@@ -56,7 +57,7 @@ class Members extends React.Component{
         }
        
         else{
-            axios.get("https://newsapi.org/v2/top-headlines?country=us&apiKey="+this.state.APIKey)
+            axios.get("https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?country=us&apiKey="+this.state.APIKey)
             .then(res=>{
                 console.log(res)
                 this.setState({
@@ -96,40 +97,40 @@ class Members extends React.Component{
     //     ))
     // }
 
-    logout(event) {
-        event.preventDefault()
-        // console.log('logging out')
-        axios.post('/api/logout').then(response => {
-          console.log(response.data)
-          if (response.status === 200) {
-            this.setState({
-                email:null,
-                uid:'',
-              redirectTo:'/'
-            })
-          }
-        }).catch(error => {
-            console.log('Logout error')
-        })
-      }
+    // logout(event) {
+    //     event.preventDefault()
+    //     // console.log('logging out')
+    //     axios.post('/api/logout').then(response => {
+    //       console.log(response.data)
+    //       if (response.status === 200) {
+    //         this.setState({
+    //             email:null,
+    //             uid:'',
+    //           redirectTo:'/'
+    //         })
+    //       }
+    //     }).catch(error => {
+    //         console.log('Logout error')
+    //     })
+    //   }
 
-    handleDelete(id){
+    // handleDelete(id){
 
-        console.log("Reached handledelete")
+    //     console.log("Reached handledelete")
 
-        axios.delete('/api/userdelete/'+id)
-        .then(response=>{
-            console.log("delete response is:",response)
-            this.setState({
-                // uid:'',
-                // email:'',
-                redirectTo:'/'
-              },()=>console.log("State set"))
-            // this.logout()
-        })
-        .catch(err=>console.log(err))
+    //     axios.delete('/api/userdelete/'+id)
+    //     .then(response=>{
+    //         console.log("delete response is:",response)
+    //         this.setState({
+    //             // uid:'',
+    //             // email:'',
+    //             redirectTo:'/'
+    //           },()=>console.log("State set"))
+    //         // this.logout()
+    //     })
+    //     .catch(err=>console.log(err))
       
-    }
+    // }
 
     handleSignup(){
         console.log("Clicked Me")
@@ -202,6 +203,8 @@ class Members extends React.Component{
             email={this.state.email}
             loggedInArticles={this.state.loggedInArticles}
             news={this.state.news}
+            loggedIn={this.state.loggedIn}
+           
           //   title={this.state.loggedInArticles[0]}
 
             />

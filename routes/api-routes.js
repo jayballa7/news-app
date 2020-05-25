@@ -44,7 +44,8 @@ module.exports = function(app) {
   app.post('/api/logout', (req, res) => {
     console.log("LOGOUTTTT")
     if (req.user) {
-        req.logout()
+        req.logout();
+        // console.log("Logout response is: ",res)
         res.send({ msg: 'logging out' })
     } else {
         res.send({ msg: 'no user to log out' })
@@ -115,13 +116,48 @@ app.put('/api/setemail',function(req,res){
   })
 })
 
-app.get('/api/settings',function(req,res){
-
+app.get('/api/settings/:email',function(req,res){
+  // console.log("EMAIL Got",req.user)
+  db.User.findOne(
+    // {
+    //   attributes: ['categories']
+    // },
+    {
+      where: {
+        // id: req.user.id
+        email:req.params.email
+      }
+    }
+  )
+  .then(response=>{
+    // console.log("categories found!!!",response)
+    res.send(response);
+  })
 })
+
+
+// app.get('/api/settings/notification/:email',function(req,res){
+//   console.log("Inside notif email",req.params);
+//   db.User.findAll(
+//     {
+//       attributes: ['notify']
+//     },
+//     {
+//       where: {
+//         email: req.params.email
+//       }
+//     }
+//   )
+//   .then(response=>{
+//     // console.log("EMAIL&&&&",response)
+//     res.send(response);
+//   })
+
+// })
 
 // route for getting article data based on user categories
 app.get("/api/categories/:email", (req, res) => {
-  console.log("USER CATEGORIES",req.params.email)
+  // console.log("USER CATEGORIES",req.params.email)
   
   db.User.findOne(
     {
@@ -143,7 +179,63 @@ app.get("/api/categories/:email", (req, res) => {
 
 })
 
+// route for setting toggling the articles "saved" status
+app.post('/api/user/:id', (req, res) => {
+  db.SavedArticle.update(
+    {
+      saved: true
+    },
+    {
+      where: {
+        id: req.params.id
+        // email:req.params.email,
+        // link:req.params.link
+      }
+    }
+  )
+})
 
+ // sends the articles the user has saved
+app.get('/api/user/saved', (req, res) => {
+  // console.log("EMAIL",db.SavedArticle,req.email)
+  db.SavedArticle.findAll(
+      {
+          where: {
+            email: req.email,
+            saved: true
+          }
+      }
+  ).then(articles => res.send(articles));
+})
+
+
+    // sends the suggested articles to the user
+    app.get('/api/user/suggested', (req, res) => {
+      console.log("saved",db.savedArticles);
+      db.SavedArticle.findAll(
+          {
+            where: {
+              email: req.user.email,
+              saved: false
+            }
+          }
+      ).then(articles => res.send(articles));
+    })
 
 };
 
+
+// db.User.findOne(
+//   // {
+//   //   attributes: ['categories']
+//   // },
+//   {
+//     where: {
+//       email: 'test2@gmail.com'
+//     }
+//   }
+// )
+// .then(response=>{
+//   console.log("categories found!!!",response)
+//   // res.send(response);
+// })

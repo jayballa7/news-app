@@ -6,9 +6,31 @@ import '../../styles/Variables.scss';
 import { Link} from "react-router-dom";
 
 function MainPage(props) {
-    console.log("propsss",props);
-    var titles=[];
-    var description=[];
+    console.log("propsss",props.loggedIn);
+    if (props.loggedIn) {
+        var loginButton = <div className="mp-cell signup">
+        <div className="card__text">
+        
+         {/* <h3 className="card--header">Login/Signup</h3> */}
+
+                {/* <button className="card--header" onClick={props.handleSignup}>Login/Signup</button> */}
+                <div><p className = "hasAccount"><Link to ='/settings' className = "settingsLink">Settings</Link></p></div>
+                {/* <button onClick={props.logout}>Logout</button> */}
+
+            </div>
+        </div>;
+      } else {
+        loginButton = <div className="mp-cell signup">
+        <div className="card__text">
+            <h3 className="card--header">Login/Signup</h3>
+
+                <button className="card--header" onClick={props.handleSignup}>Login/Signup</button>
+               
+                {/* <button onClick={props.logout}>Logout</button> */}
+
+            </div>
+        </div>;
+      }
 
     // var article
     // props.loggedInArticles.map(article={
@@ -31,7 +53,7 @@ function MainPage(props) {
                 <div className="mp-cell username">
                 <div className="card__text">
 
-    <h3 className="card--header">Welcome {props.email}</h3>
+                 <h3 className="card--header">Welcome {props.email}</h3>
 
                     </div>
                 </div>
@@ -46,16 +68,8 @@ function MainPage(props) {
                         <h3 className="card--header">Searchbox</h3>
                     </div>
                 </div>
-                <div className="mp-cell signup">
-                <div className="card__text">
-
-                 <h3 className="card--header">Login/Signup</h3>
-
-                        <button className="card--header" onClick={props.handleSignup}>Login/Signup</button>
-                        <div><p className = "hasAccount"><Link to ='/settings' className = "settingsLink">Settings</Link></p></div>
-
-                    </div>
-                </div>
+                {loginButton}
+                
                
                 {props.loggedInArticles.map((article,index)=>(
                 <div className={"mp-cell sidebox-"+index}>
