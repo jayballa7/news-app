@@ -6,6 +6,7 @@ import Ticker from "../Ticker.js";
 import Logo from "../Logo.js";
 import Searchbox from "../Searchbox.js";
 import Weather from "../Weather.js";
+import NewsImg from '../../img/test-img.jpg';
 
 function MainPage(props) {
     return(
@@ -41,7 +42,7 @@ function MainPage(props) {
                 {props.loggedInArticles.map((article,index)=>(
                 <div className={"mp-cell sidebox-"+index}>
                     <div className="card--profile">
-                        <img className = "img" src={article.urlToImage} alt="news-image1"/>
+                        <img className = "img" src={article.urlToImage} alt="news-img" />
                     </div>
                        <div className="card__text">
                        <h5 className="card--header">{article.title}</h5>
@@ -54,7 +55,7 @@ function MainPage(props) {
                 {props.news.map((article,index)=>(
                 <div className={"mp-cell sidebox-"+index}>
                     <div className="card--profile">
-                        <img className = "img" src={article.urlToImage} alt="news-image1"/>
+                        <img className = "img" src={article.urlToImage} alt="news-img"/>
                     </div>
                        <div className="card__text">
                        <h5 className="card--header">{article.title}</h5>

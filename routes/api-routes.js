@@ -140,7 +140,6 @@ app.get('/api/settings/:email',function(req,res){
 // route for getting article data based on user categories
 app.get("/api/categories/:email", (req, res) => {
   // console.log("USER CATEGORIES",req.params.email)
-  console.log('jenn was here');
   db.User.findAll(
     // {
     //   attributes: ['categories']
@@ -154,7 +153,7 @@ app.get("/api/categories/:email", (req, res) => {
   .then(data => {
       let categories = data[0].dataValues.categories.replace(" ", "").split(',');
       console.log('Categories:', categories);
-      let limit = Math.floor(10 / categories.length);
+      let limit = Math.floor(13 / categories.length);
       for (let i = 0; i < categories.length; i++) {
         getArticles(categories[i], limit,res);
       }

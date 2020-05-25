@@ -230,11 +230,13 @@ html, body {
 }
 
 @media screen and (max-width: 575.98px) {
+  
   .setting-container {
+    height: 1000vh;
     display: grid;
     gap: 2rem;
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: repeat(4, minmax(0, 1fr));
+    grid-template-columns: minmax(autofill, 1fr);
+    grid-template-rows: repeat(3, minmax(0, 1fr));
   }
 
   .setting-card {
