@@ -3,23 +3,23 @@ import React from 'react';
 function TableSavedArticles(props){
     
     return(
-        <table className="table table-dark">
+        <table className="settings-table">
             <thead>
                 <tr>
-                <th scope="col">Article Title</th>
-                <th scope="col">Article Link</th>
+                <th className = "table-heading" scope="col">Article Title</th>
+                <th className = "table-heading" scope="col">Article Link</th>
                 
                 </tr>
             </thead>
-
+            <hr className = "separate-line"></hr>
             {props.savedArticles.map((article,index)=>(
                 <tbody>
                 <tr> 
-                <th scope="row">{article.title}</th>
-                <td><a href={article.link} target="_blank">Read More</a></td>
+                <th className = "table-row" scope="row">{article.title}</th>
+                <td className = "table-row"><a href={article.link} target="_blank">Read More</a></td>
                 {/* <button data-id={article.id} onClick={props.handleSave}>Save</button> */}
                 </tr>
-      
+                <hr className = "separate-line"></hr>
             </tbody>
             ))}
             

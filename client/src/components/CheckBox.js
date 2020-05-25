@@ -1,8 +1,6 @@
 import React from 'react';
 import '../styles/Checkbox.scss';
 
-
-
 export const CheckBox = props => {
     return (
       <ul className = "checkbox">
@@ -14,6 +12,5 @@ export const CheckBox = props => {
       
     )
 }
-
 
 export default CheckBox;

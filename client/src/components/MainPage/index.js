@@ -87,7 +87,7 @@ function MainPage(props) {
                 {props.news.map((article,index)=>(
                 <div className={"mp-cell sidebox-"+index}>
                     <div className="card--profile">
-                        <img className = "img" src={article.urlToImage} alt="news-img"/>
+                        <img className = "img" src={article.urlToImage? article.urlToImage:NewsImg} alt="news-img"/>
                     </div>
                        <div className="card__text">
                        <h5 className="card--header">{article.title}</h5>
