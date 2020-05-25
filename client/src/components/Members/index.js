@@ -26,6 +26,7 @@ class Members extends React.Component{
         this.displayName=this.displayName.bind(this)
         this.fillPage=this.fillPage.bind(this)
         this.handleSignup = this.handleSignup.bind(this)
+        this.handleSaveClick=this.handleSaveClick.bind(this)
     }
     componentDidMount(){
         this.displayName();
@@ -97,8 +98,11 @@ class Members extends React.Component{
     //         console.log('Logout error')
     //     })
     //   }
+
     // handleDelete(id){
+
     //     console.log("Reached handledelete")
+
     //     axios.delete('/api/userdelete/'+id)
     //     .then(response=>{
     //         console.log("delete response is:",response)
@@ -110,7 +114,24 @@ class Members extends React.Component{
     //         // this.logout()
     //     })
     //     .catch(err=>console.log(err))
+      
     // }
+    handleSaveClick(event){
+        console.log("Title",event.target.dataset.title);
+        console.log("URL",event.target.dataset.link);
+        const savedArticle={
+            email:this.state.email,
+            link:event.target.dataset.link,
+            saved:true,
+            title: event.target.dataset.title
+        }
+        axios.post('/api/save',savedArticle)
+        .then(response=>{
+            console.log("Save button",response)
+        })
+
+    }
+
     handleSignup(){
         // console.log("Clicked Me")
         this.setState({
@@ -153,8 +174,8 @@ class Members extends React.Component{
       )
     }
     render() {  
-        // console.log("Redir",this.state.redirectTo)
-        // console.log("LOGGEDINARTI",this.state.news)
+        console.log("Redir",this.state.redirectTo)
+        console.log("LOGGEDINARTI",this.loggedInArticles)
         // console.log(this.state.email)
         // console.log("LOGGED",this.state.news)
         if (this.state.redirectTo) {
@@ -172,6 +193,9 @@ class Members extends React.Component{
             email={this.state.email}
             loggedInArticles={this.state.loggedInArticles}
             news={this.state.news}
+            loggedIn={this.state.loggedIn}
+            handleSaveClick={this.handleSaveClick}
+           
           //   title={this.state.loggedInArticles[0]}
             />
           {/* {

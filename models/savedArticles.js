@@ -15,11 +15,13 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false
       },
+  
       // boolean value to tell if the article has been saved or not
       saved: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
       },
+  
       // title of the article
       title: {
         type: DataTypes.STRING,

@@ -4,7 +4,9 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 var passport = require("./config/passport");
 var session = require("express-session");
+var cors = require('cors')
 
+app.use(cors())
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));

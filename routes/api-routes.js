@@ -102,8 +102,9 @@ app.put('/api/setemail',function(req,res){
     }
   })
 })
+
 app.get('/api/settings/:email',function(req,res){
-  console.log("EMAIL Got",req.user)
+  // console.log("EMAIL Got",req.user)
   db.User.findOne(
     // {
     //   attributes: ['categories']
@@ -116,10 +117,12 @@ app.get('/api/settings/:email',function(req,res){
     }
   )
   .then(response=>{
-    console.log("categories found!!!",response)
+    // console.log("categories found!!!",response)
     res.send(response);
   })
 })
+
+
 // app.get('/api/settings/notification/:email',function(req,res){
 //   console.log("Inside notif email",req.params);
 //   db.User.findAll(
@@ -152,7 +155,7 @@ app.get("/api/categories/:email", (req, res) => {
   )
   .then(data => {
       let categories = data[0].dataValues.categories.replace(" ", "").split(',');
-      console.log('Categories:', categories);
+      // console.log('Categories:', categories);
       let limit = Math.floor(13 / categories.length);
       for (let i = 0; i < categories.length; i++) {
         getArticles(categories[i], limit,res);
@@ -175,21 +178,22 @@ app.post('/api/user/:id', (req, res) => {
     }
   )
 })
+
  // sends the articles the user has saved
-app.get('/api/user/saved', (req, res) => {
-  // console.log("EMAIL",db.SavedArticle,req.email)
-  db.SavedArticle.findAll(
-      {
-          where: {
-            email: req.email,
-            saved: true
-          }
-      }
-  ).then(articles => res.send(articles));
-})
+// app.get('/api/user/saved/:email', (req, res) => {
+//   // console.log("EMAIL",db.SavedArticle,req.email)
+//   db.SavedArticle.findAll(
+//       {
+//           where: {
+//             email: req.email,
+//             saved: true
+//           }
+//       }
+//   ).then(articles => res.send(articles));
+// })
     // sends the suggested articles to the user
     app.get('/api/user/suggested', (req, res) => {
-      console.log("saved",db.savedArticles);
+      //console.log("saved",db.savedArticles);
       db.SavedArticle.findAll(
           {
             where: {
@@ -214,31 +218,46 @@ app.post('/api/user/:id', (req, res) => {
   )
 })
  // sends the articles the user has saved
-app.get('/api/user/saved', (req, res) => {
-  // console.log("EMAIL",db.SavedArticle,req.email)
+app.get('/api/user/saved/:email', (req, res) => {
+  console.log('saved');
+  // console.log(req.params.email);
   db.SavedArticle.findAll(
       {
           where: {
-            email: req.email,
+            email: req.params.email,
             saved: true
           }
       }
-  ).then(articles => res.send(articles));
+    ).then(articles => {res.send(articles); console.log('saved 2')});
+  
 })
+
+
     // sends the suggested articles to the user
-    app.get('/api/user/suggested', (req, res) => {
-      console.log("saved",db.savedArticles);
+    app.get('/api/user/suggested/:email', (req, res) => {
+      console.log("suggested", req.params.email);
+      let email = req.params.email;
       db.SavedArticle.findAll(
           {
             where: {
-              email: req.user.email,
+              email: email,
               saved: false
             }
           }
-      ).then(articles => res.send(articles));
+      ).then(articles => {res.send(articles); console.log('suggested 2')});
     })
 
+    app.post('/api/save',function(req,res){
+      db.SavedArticle.create(
+        req.body
+      )
+      .then(res.end());
+    })
+
+
 };
+
+
 // db.User.findOne(
 //   // {
 //   //   attributes: ['categories']

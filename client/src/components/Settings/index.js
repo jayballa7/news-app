@@ -4,7 +4,13 @@ import {Redirect, Link } from "react-router-dom";
 import Img from "../../img/profile-img.jpg";
 import  CheckBox  from '../CheckBox.js';
 import TableData from '../TableData.js';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import TableSavedArticles from '../TableSavedArticles.js';
 import axios from 'axios';
+
+toast.configure();
+
 
 class Settings extends React.Component{
   is_Mounted =false;
@@ -13,6 +19,7 @@ class Settings extends React.Component{
         this.state = {
             history:[],
             suggestedArticles:[],
+            savedArticles:[],
             historyString:'',
             flag:false,
             redirectTo: null,
@@ -36,7 +43,9 @@ class Settings extends React.Component{
         // this.retrieveData();
         // this.retrieveEmail();
         this.accountDetails();
+        
       }
+
       accountDetails(){
           console.log("000000000000000")
           this.is_Mounted = true;
@@ -46,26 +55,35 @@ class Settings extends React.Component{
               if(data.status===200){
                   console.log("account details",data.data.id,data.data.email)
                   if (this.is_Mounted === true) {
-                    this.setState({
-                        uid:data.data.id,
-                        email:data.data.email,
-                    },()=>{
-                      this.retrieveData();
-                      this.displaySuggested();
-                      // this.retrieveEmail();
-                    })
-                  }
+                  this.setState({
+                      uid:data.data.id,
+                      email:data.data.email,
+            
+                    
+                  },()=>{
+                    this.retrieveData();
+                    this.displaySuggested();
+                    this.displaySavedArticles();
+                    // this.retrieveEmail();
+                  })
+                }
               }
+
         })
         .catch(
             err=>console.log(err)
         )
+        
+        
+      
       }
       retrieveData(){
         // axios.get('/api/categories/:email'+this.state.email)
         axios.get('/api/settings/'+this.state.email)
         .then(response=>{
           console.log("!!!!!",response.data.categories)
+          
+
           let category = this.state.category
           console.log("CAT", category)
           // console.log("retrieveData", response.data.categories)
@@ -90,30 +108,46 @@ class Settings extends React.Component{
         }else{
           this.setState({
             category : [
-              {id: 1, value: "General", isChecked: false},
-              {id: 2, value: "Politics", isChecked: false},
-              {id: 3, value: "Art", isChecked: false},
+              // {id: 1, value: "General", isChecked: false},
+              {id: 2, value: "Technology", isChecked: false},
+              // {id: 3, value: "Art", isChecked: false},
               {id: 4, value: "Science", isChecked: false},
               {id: 5, value: "Entertainment", isChecked: false},
               {id: 6, value: "Sports", isChecked: false},
               {id: 7, value: "Business", isChecked: false},
               {id: 8, value: "Health", isChecked: false},
-              {id: 9, value: "Style", isChecked: false}
+              // {id: 9, value: "Style", isChecked: false}
+
         ]
           })
         }
         })
       }
-
+      
       displaySuggested(){
-        axios.get('/api/user/suggested')
+        
+        axios.get('/api/user/suggested/'+ this.state.email)
         .then(res=>{
           console.log("Suggested",res);
           this.setState({
             suggestedArticles:res.data
           })
+          
+        })
+        
+      }
+
+      displaySavedArticles(){
+        console.log(this.state.email);
+        axios.get('/api/user/saved/'+this.state.email)
+        .then(response=>{
+          console.log("Saved Articles back",response);
+          this.setState({
+            savedArticles:response.data
+          })
         })
       }
+
       handleSave(event){
         var saveId=event.target.dataset.id;
         console.log("handleSave:", saveId)
@@ -122,6 +156,8 @@ class Settings extends React.Component{
           console.log("Saved cahnged",response)
         })
       }
+
+
       // retrieveEmail(){
       //   axios.get('/api/settings/notification/'+ this.state.email)
       //   .then(response=>{
@@ -143,6 +179,7 @@ class Settings extends React.Component{
         console.log("@@@@"+event.target.value)
       }
       handleSubmit(event){
+        
           console.log("HELLO");
           for(var i=0;i<this.state.category.length;i++){
             if(this.state.category[i].isChecked===true){
@@ -163,6 +200,8 @@ class Settings extends React.Component{
             })
           })
           console.log(this.state.history.toString())
+          toast.success("Saved successfully!");
+          
         //   updateCategory(this.state.historyString);
       }
       handleNotify(event){
@@ -195,35 +234,44 @@ class Settings extends React.Component{
             console.log('Logout error')
         })
       }
+
       handleDelete(id){
+
         console.log("Reached handledelete")
         this.logout()
+
         axios.delete('/api/userdelete/'+id)
         .then(response=>{
             console.log("delete response is:",response)
+            
             // this.setState({
             //     // uid:'',
             //     // email:'',
             //     redirectTo:'/'
             //   })
+            
         })
         .catch(err=>console.log(err))
+      
     }
+
     componentWillUnmount() {
       this.is_Mounted=false;
     }
+    
       render() {
         if (this.state.redirectTo) {
           return <Redirect to={{ pathname: this.state.redirectTo }} />
+         
       }
       else{
         console.log("notify",this.state.flag)
         return (
           <div className="App">
                 <div className="setting-container">
-                  <div className="setting-page">
-                    <div className="setting-card">
-                      <div className="sp-cell profile-card">
+            <div className="setting-page">
+                <div className="setting-card">
+                    <div className="sp-cell profile-card">
                         <div className="setting-card--profile">
                             <img className = "img" src={Img} alt="profile-photo"/>
                         </div>
@@ -254,26 +302,33 @@ class Settings extends React.Component{
             }
             </ul>
             <button type="submit" className = "save-categories" value="Save" onClick={this.handleSubmit.bind(this)}>Save</button>
+{/* 
+            <div className = "notifications">
+                                <label className="switch">
+                                <input type="checkbox" onChange={this.handleNotify.bind(this)} checked={this.state.flag}/>
+                                <span className="slider round"></span>
+                                </label>
+                                <p>Receive email notifications</p>
+            </div> */}
           </div>
+
           </div>
-          <div className = "suggested-heading">
-            <h5>Suggested Articles</h5>
-          </div>
-          <div className = "go-back">
-            <h5>Go back to <Link to ='/memberspage' className = "go-link">NewsFlash--></Link></h5>
-          </div>
-          <div className="table-cell">
-            <TableData
+                    </div>
+                </div>
+            </div>
+             {/* {this.displaySuggested} */}
+             <TableData
              suggestedArticles={this.state.suggestedArticles}
              handleSave={this.handleSave}
              />
-          </div>
+            
+            
+            <TableSavedArticles
+            savedArticles={this.state.savedArticles}
 
-                    </div>
-                </div>
+            />
 
-                
-            </div>
+             
 
         </div>
         );
