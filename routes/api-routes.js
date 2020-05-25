@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+const { getArticles } = require("./api-news");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -33,6 +34,30 @@ module.exports = function(app) {
       });
   });
 
+  // route for saving an article
+  app.post("/api/save_article", function(req, res) {
+    db.savedArticles.create({
+      email: req.body.email,
+      link: req.body.link,
+      saved: true
+    })
+      .catch(function(err) {
+        res.status(401).json(err);
+      });
+  });
+
+  // route for retrieving saved articles for any user
+  app.get("/api/get_saved_articles", function (req, res) {
+    db.savedArticles.findAll( {
+      where: {
+        email: req.body.email
+      }
+    })
+    .then(function (results) {
+      res.json(results);
+    })
+  })
+
   // // Route for logging user out
   // app.get("/api/logout", function(req, res) {
   //   console.log("Inside logout###")
@@ -43,7 +68,8 @@ module.exports = function(app) {
   app.post('/api/logout', (req, res) => {
     console.log("LOGOUTTTT")
     if (req.user) {
-        req.logout()
+        req.logout();
+        // console.log("Logout response is: ",res)
         res.send({ msg: 'logging out' })
     } else {
         res.send({ msg: 'no user to log out' })
@@ -52,7 +78,7 @@ module.exports = function(app) {
 
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", function(req, res) {
-    // console.log("REQ>USER??",req.user)
+    console.log("REQ>USER??",req.user)
     if (!req.user) {
       // The user is not logged in, send back an empty object
       res.json({});
@@ -61,7 +87,8 @@ module.exports = function(app) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,
-        id: req.user.id
+        id: req.user.id,
+        categories:req.user.categories
       });
     }
   });
@@ -93,6 +120,146 @@ app.delete('/api/userdelete/:id',(req,res)=>{
     });
 })
 
+app.put('/api/setcategory',function(req,res){
+
+  console.log("setcat req",req.user)
+  db.User.update({categories:req.body.data},{
+    where:{
+      id:req.user.id
+    }
+  })
+})
+
+app.put('/api/setemail',function(req,res){
+
+  console.log("setcat req",req.user)
+  db.User.update({notify:req.body.data},{
+    where:{
+      id:req.user.id
+    }
+  })
+})
+
+app.get('/api/settings/:email',function(req,res){
+  // console.log("EMAIL Got",req.user)
+  db.User.findOne(
+    // {
+    //   attributes: ['categories']
+    // },
+    {
+      where: {
+        // id: req.user.id
+        email:req.params.email
+      }
+    }
+  )
+  .then(response=>{
+    // console.log("categories found!!!",response)
+    res.send(response);
+  })
+})
+
+
+// app.get('/api/settings/notification/:email',function(req,res){
+//   console.log("Inside notif email",req.params);
+//   db.User.findAll(
+//     {
+//       attributes: ['notify']
+//     },
+//     {
+//       where: {
+//         email: req.params.email
+//       }
+//     }
+//   )
+//   .then(response=>{
+//     // console.log("EMAIL&&&&",response)
+//     res.send(response);
+//   })
+
+// })
+
+// route for getting article data based on user categories
+app.get("/api/categories/:email", (req, res) => {
+  // console.log("USER CATEGORIES",req.params.email)
+  
+  db.User.findOne(
+    {
+      attributes: ['categories']
+    },
+    {
+      where: {
+        email: req.params.email
+      }
+    }
+  )
+  .then(data => {
+      let categories = data.dataValues.categories.replace(" ", "").split(',');
+      let limit = Math.floor(12 / categories.length);
+      for (let i = 0; i < categories.length; i++) {
+        getArticles(categories[i], limit,res);
+      }
+  })
+
+})
+
+// route for setting toggling the articles "saved" status
+app.post('/api/user/:id', (req, res) => {
+  db.SavedArticle.update(
+    {
+      saved: true
+    },
+    {
+      where: {
+        id: req.params.id
+        // email:req.params.email,
+        // link:req.params.link
+      }
+    }
+  )
+})
+
+ // sends the articles the user has saved
+app.get('/api/user/saved', (req, res) => {
+  // console.log("EMAIL",db.SavedArticle,req.email)
+  db.SavedArticle.findAll(
+      {
+          where: {
+            email: req.email,
+            saved: true
+          }
+      }
+  ).then(articles => res.send(articles));
+})
+
+
+    // sends the suggested articles to the user
+    app.get('/api/user/suggested', (req, res) => {
+      console.log("saved",db.savedArticles);
+      db.SavedArticle.findAll(
+          {
+            where: {
+              email: req.user.email,
+              saved: false
+            }
+          }
+      ).then(articles => res.send(articles));
+    })
 
 };
 
+
+// db.User.findOne(
+//   // {
+//   //   attributes: ['categories']
+//   // },
+//   {
+//     where: {
+//       email: 'test2@gmail.com'
+//     }
+//   }
+// )
+// .then(response=>{
+//   console.log("categories found!!!",response)
+//   // res.send(response);
+// })

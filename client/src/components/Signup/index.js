@@ -10,13 +10,15 @@ class Signup extends Component {
 	constructor() {
 		super()
 		this.state = {
-			email: '',
-            password: '',
-            loggedIn: false,
-			redirectTo: null
+			  email: '',
+        password: '',
+        loggedIn: false,
+			  redirectTo: null
 
         }
-        this.getUser = this.getUser.bind(this)
+
+    this.getUser = this.getUser.bind(this)
+
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
     }

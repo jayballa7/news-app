@@ -1,0 +1,216 @@
+@import "Variables";
+.setting-container {
+    min-height: 100vh;
+  }
+  .setting-page {
+    background-color: rgba(0,0,0,0.9);
+    margin: 0;
+    padding: 3%;
+  }
+  .sp-cell {
+    display: grid;
+    width: 100%;
+    background-color: #fff;
+    border: 4px solid black;
+    padding: 2%;
+  }
+.setting-card {
+  text-align: center;
+  display:grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(100px, 1fr));
+  grid-template-rows: minmax(100px, 1fr);
+  align-items: center;
+  img {
+    width: 90%;
+    border-radius: 30%;
+    object-fit: cover;
+  }
+  &__text {
+    padding: 10px 20px;
+    * {
+      margin-top: 10px;
+    }
+    p {
+      color: black;
+    }
+  &--profile {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+}
+}
+/* div with the user's profile and picture */
+.profile-card {
+  border-radius: 30px;
+  width: 70%;
+  margin-left: 5%;
+  grid-column: 1;
+  grid-row: 1;
+}
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 42px;
+  }
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  .slider.round {
+    border-radius: 34px;
+  }
+  .slider.round:before {
+    border-radius: 50%;
+  }
+.setting-card--header {
+    text-align: center;
+}
+/* div with the categories */
+.categories {
+    border-radius:30px;
+    margin-right: 10%;
+    text-align: left;
+    background-color: #fff;
+    border: 4px solid black;
+    padding: 2%;
+    grid-column: 2 / span 2;
+    grid-row: 1;
+}
+/* Customize the label */
+.category {
+    text-align: left;
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 1em;
+    // -webkit-user-select: none;
+    // -moz-user-select: none;
+    // -ms-user-select: none;
+    // user-select: none;
+  }
+  /* Hide the browser's default checkbox */
+  .category input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+  }
+  /* On mouse-over, add a grey background color */
+  .category:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  /* When the checkbox is checked, add a blue background */
+  .category input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  /* Show the checkmark when checked */
+  .category input:checked ~ .checkmark:after {
+    display: block;
+  }
+  /* Style the checkmark/indicator */
+  .category .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  ul.checkbox li { 
+    border: 1px transparent solid; 
+    display:inline-block;
+    width:12em;
+  }
+  .save-categories {
+    background-color: #059AEB;
+    color:white;
+    width: 20%;
+    height: 7vh;
+    border: solid black;
+    border-radius: 10px;
+    font-size: 1rem; 
+    float: right;
+  }
+  @media screen and (max-width: 575.98px) {
+    .setting-card {
+     align-items: flex-start;
+     width: 90%;
+     gap: 0;
+     grid-template-columns: minmax(10px, 1fr);
+     grid-template-rows: 1fr 110vh;
+    }
+    .profile-card {
+        margin: 0;
+        width: 105%;
+        grid-column: 1;
+        grid-row: 1;
+      }
+      .categories {
+        width: 105%;
+        margin: 0;
+        font-size: 0.8rem;
+        grid-column: 1;
+        grid-row: 2;
+        .save-categories {
+            color:white;
+            width: 30%;
+            height: 4vh;
+            border-radius: 10px;
+            font-size: 1rem; 
+          }
+    }
+  }
