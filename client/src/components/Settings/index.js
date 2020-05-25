@@ -119,6 +119,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import  CheckBox  from '../CheckBox.js';
 import TableData from '../TableData.js';
+import TableSavedArticles from '../TableSavedArticles.js';
 import axios from 'axios';
 
 toast.configure();
@@ -131,6 +132,7 @@ class Settings extends React.Component{
         this.state = {
             history:[],
             suggestedArticles:[],
+            savedArticles:[],
             historyString:'',
             flag:false,
             redirectTo: null,
@@ -176,6 +178,7 @@ class Settings extends React.Component{
                   },()=>{
                     this.retrieveData();
                     this.displaySuggested();
+                    this.displaySavedArticles();
                     // this.retrieveEmail();
                   })
                 }
@@ -248,6 +251,16 @@ class Settings extends React.Component{
           
         })
         
+      }
+
+      displaySavedArticles(){
+        axios.get('/api/user/saved/'+this.state.email)
+        .then(response=>{
+          console.log("Saved Articles back",response);
+          this.setState({
+            savedArticles:response.data
+          })
+        })
       }
 
       handleSave(event){
@@ -433,6 +446,14 @@ class Settings extends React.Component{
              suggestedArticles={this.state.suggestedArticles}
              handleSave={this.handleSave}
              />
+            
+            
+            <TableSavedArticles
+            savedArticles={this.state.savedArticles}
+
+            />
+
+             
 
         </div>
         );

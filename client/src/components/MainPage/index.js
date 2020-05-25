@@ -78,8 +78,9 @@ function MainPage(props) {
                     </div>
                        <div className="card__text">
                        <h5 className="card--header">{article.title}</h5>
-                       <div className="separator"></div>
+                       <div className="separator"></div> 
                        <div className="card--footer"><button className="btn">Link</button></div>
+                       <button className="btn" data-title={article.title} data-link={article.url} onClick={props.handleSaveClick} >Save</button>
                    </div>
                    </div>
                 ))} 

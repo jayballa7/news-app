@@ -220,12 +220,12 @@ app.post('/api/user/:id', (req, res) => {
 })
 
  // sends the articles the user has saved
-app.get('/api/user/saved', (req, res) => {
+app.get('/api/user/saved/:email', (req, res) => {
   // console.log("EMAIL",db.SavedArticle,req.email)
   db.SavedArticle.findAll(
       {
           where: {
-            email: req.email,
+            email: req.params.email,
             saved: true
           }
       }
@@ -245,6 +245,14 @@ app.get('/api/user/saved', (req, res) => {
           }
       ).then(articles => res.send(articles));
     })
+
+    app.post('/api/save',function(req,res){
+      db.SavedArticle.create(
+        req.body
+      )
+      .then(res.end());
+    })
+
 
 };
 
