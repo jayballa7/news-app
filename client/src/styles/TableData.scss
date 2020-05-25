@@ -1,3 +1,24 @@
-.table-heading {
-    margin-left: 20%;
+.settings-table {
+    font-size: 1em;
+    text-align: left;
+    .table-heading {
+        text-align: center;
+    }
+    .table-row {
+        font-size: .8em;
+    }
+    .sugg-btn {
+            margin-top: 25%;
+            background-color:black;
+            color: white;
+            padding:0.35em 1em;
+            border:0.1em solid black;
+            border-radius:0.5em;
+            transition: all 0.2s;
+            }
+    .sugg-btn:hover{
+        color:white;
+        background-color:#0867bf;
+    }
+    
 }

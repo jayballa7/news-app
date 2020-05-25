@@ -33,7 +33,6 @@ function MainPage(props) {
                 </div>
                 <div className="mp-cell signup">
                 <div className="card__text">
-                 {/* <h3 className="card--header">Login/Signup</h3> */}
                         <button className="login-btn" onClick={props.handleSignup}>Login/Signup</button>
                         <div><p className = "hasAccount"><Link to ='/settings' className = "settingsLink">Settings</Link></p></div>
                     </div>
@@ -60,7 +59,7 @@ function MainPage(props) {
                        <div className="card__text">
                        <h5 className="card--header">{article.title}</h5>
                        <div className="separator"></div>
-                       <div className="card--footer"><button className="btn">Link</button></div>
+                       <div className="card--footer"><button className="btn">Read</button></div>
                    </div>
                    </div>
                 ))} 

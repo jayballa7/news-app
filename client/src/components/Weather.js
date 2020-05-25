@@ -18,21 +18,6 @@ class Weather extends Component {
 
 
     componentDidMount() {
-        // if ("geolocation" in navigator) {
-        //     navigator.geolocation.getCurrentPosition(function(position) {
-        //         console.log("Latitude is :", position.coords.latitude);
-        //         console.log("Longitude is :", position.coords.longitude);
-        //         let lat = position.coords.latitude;
-        //         let lon = position.coords.longitude;
-
-        //         let data1 = axios.get(`https://api.openweathermap.org/data/2.5/weather?appid=16202c6e80fee5da38da3ef00e9cdf59&lat=${lat}&lon=${lon}`).then(data1 => {
-        //             console.log(data1.data);
-        //             this.getWeatherData(data1.data.name);
-        //         })
-        //     })
-        // } else {
-        //     console.log("Not Available");
-        // }
         this.getWeatherData();
       }
 
