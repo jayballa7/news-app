@@ -73,6 +73,7 @@ class Login extends React.Component{
                     // })
                     // update the state to redirect to home
                     this.setState({
+                        loggedIn:true,
                         redirectTo: '/memberspage'
                     })
                     console.log("Redirect:",this.state.redirectTo)
@@ -103,13 +104,13 @@ class Login extends React.Component{
             <div className = "wrapper">
                 <form className="login" action="" method="post">
                     <h2 className = "loginHeading">Login</h2>
-                    <div><label for="email">Email  </label>
+                    <div><label for="email" className = "email-label">Email </label>
                     <input type="text" name="email" id="email" value={this.state.email}  onChange={this.handleChange}/></div>
                     {/* <div><label for="username">Username </label>
                     <input type="text" name="username" id="username"/></div> */}
                     <div><label for="password">Password </label>
                     <input type="password" name="password" id="password" value={this.state.password}  onChange={this.handleChange}/></div>
-                    <div><a href="#" type = "submit" className="button1 bouncy"   onClick={this.handleSubmit}>What's New?</a></div>
+                    <div><a type = "submit" className="button1 bouncy"   onClick={this.handleSubmit}>What's New?</a></div>
                     <div><p className = "noAccount">Don't have an account? <Link to= '/signup' className = "signupLink">Sign Up</Link></p></div>
                 </form>
                 </div>

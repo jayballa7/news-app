@@ -1,0 +1,72 @@
+$pinkbg: #f781b0;
+$darkpink:#ba2d65;
+
+@mixin searchStyle {
+    text-align: center;
+    // padding:3px;
+    // margin:3px 0;
+    border: 2px solid black;
+    border-radius: 4px;
+}
+
+
+.search-articles {
+    height: 15vh;
+    font-weight: bold;
+    font-size: 1.5em;
+    padding-top: 3%;
+    background-color: white;
+    border: 5px solid #e007aa;
+    border-radius:10px;
+}
+
+
+  #search {
+    height: 5vh;
+    padding-top: 1%;
+    margin-right: 2%;
+    @include searchStyle();
+    text-align: left;
+    &:hover {
+        background-color: lightpink;
+    }
+  }
+
+.search-label {
+  font-weight: bolder;
+  padding-right: 24px;
+}
+
+
+  .search-btn{
+    display: inline-block;
+    height: 5vh;
+    width: 20%;
+    // margin-top: 3%;
+    background-color:black;
+    color: white;
+    // padding:0.35em 1.2em;
+    border:0.1em solid black;
+    border-radius: 5px;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight: bold;
+    transition: all 0.2s;
+    }
+.search-btn:hover{
+    color:#000000;
+    background-color:#FFFFFF;
+    }
+@media all and (max-width:30em){
+
+  #search {
+    height: 4vh;
+    padding-top: -3%;
+  } 
+.search-btn{
+    height: 4vh;
+    width: 30%;
+    margin:0.4em auto;
+}
+}

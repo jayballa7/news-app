@@ -1,0 +1,107 @@
+$red: #fe4560;
+$blue: #98b5cc;
+
+$face: #e007aa;
+$flourish: #fff;
+$shadowdots: white;
+$shadow: #e007aa;
+$shadow2: #cbc7e3;
+
+.logo {
+	font-family: 'Rig Bold Face', sans-serif;
+	text-transform: uppercase;
+	font-size: 7vw;
+	text-align: center;
+	font-weight: normal;
+    left: 40%;
+    top: 8%;
+	transform: translate(-50%, -50%);
+    position: absolute;
+    animation: lower 11s linear infinite;
+
+    @keyframes lower {
+        0%,12%,18.999%,23%,31.999%,37%,44.999%,46%,49.999%,51%,58.999%,61%,68.999%,71%,85.999%,96%,100% {
+          opacity:0.99; text-shadow: 0 0 80px #e362c3,0 0 30px #a30258,0 0 6px DarkRed;
+        }
+        19%,22.99%,32%,36.999%,45%,45.999%,50%,50.99%,59%,60.999%,69%,70.999%,86%,95.999% { 
+          opacity:0.4; text-shadow: none; 
+        }
+      }
+
+
+	color: $face;
+
+	&:before,
+	&:after, 
+	span:before, 
+	span:after {
+		content: attr(data-heading);
+		position: absolute;
+		overflow: hidden;
+		left: 0;
+		top: 0;
+		width: 100%;
+		z-index: 5;
+		font-weight: normal;
+		text-shadow: none;
+	}
+	
+	&:before {
+ 		color: $flourish;
+ 		font-family: 'Rig Bold Inline', sans-serif;
+	}
+	
+	&:after {
+ 		font-family: 'Rig Bold Coarse', sans-serif;
+ 		color: $shadowdots;
+	}
+}
+
+span {
+	&::before {
+		font-family: 'Rig Bold Shadow', sans-serif;
+		color: $shadow2;
+		z-index: -1;
+	}
+	
+	&::after {
+		font-family: 'Rig Bold Extrude', sans-serif;
+		color: $shadow;
+		z-index: -1;	
+	}
+	
+}
+
+
+
+@font-face {
+	font-family:'Rig Bold Coarse'; 
+	src:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/Rig-BoldCoarse.otf');
+}
+
+@font-face {
+	font-family:'Rig Bold Extrude'; 
+	src:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/Rig-BoldExtrude.otf');
+}
+
+@font-face {
+	font-family:'Rig Bold Shadow'; 
+	src:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/Rig-BoldShadow.otf');
+}
+
+@font-face {
+	font-family:'Rig Bold Face'; 
+	src:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/Rig-BoldFace.otf');
+}
+
+@font-face {
+	font-family:'Rig Bold Inline'; 
+	src:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/Rig-BoldInline.otf');
+}
+
+@media screen and (max-width: 575.98px) {
+    .logo {
+        left: 50%;
+        font-size: 12vw;
+    }
+}

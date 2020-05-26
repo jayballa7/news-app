@@ -1,0 +1,42 @@
+.settings-table {
+    font-size: 1em;
+    text-align: left;
+    .table-heading {
+        text-align: center;
+    }
+    .table-row {
+        font-size: .6em;
+    }
+    .button-row {
+        font-size: .8em;
+    }
+    .sugg-btn {
+            font-size: .9em;
+            background-color:black;
+            color: white;
+            padding: 14% 22% 14% 22%;
+            border:0.2em solid black;
+            border-radius:0.6em;
+            transition: all 0.2s;
+            }
+    .sugg-btn:hover{
+        color:white;
+        background-color:#0867bf;
+    }
+    
+}
+
+.separate-line {
+    width: 100%;
+  }
+
+  .read-more {
+    margin-left: -100%;
+    width: 30%;
+    text-decoration: none;
+    background-color: #0867bf;
+    border:0.1em solid black;
+    color: white;
+    border-radius:0.5em;
+    padding: 12% 50% 12% 50%;
+}

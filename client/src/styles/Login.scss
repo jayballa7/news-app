@@ -2,6 +2,7 @@ $pinkbg: #f781b0;
 $darkpink:#ba2d65;
 
 @mixin inputStyle {
+    text-align: center;
     padding:3px;
     margin:3px 0;
     border: 2px solid black;
@@ -24,7 +25,6 @@ html, body {
       grid-template-areas: 
       "box1 box1 box1"
       " . box2 . ";
-    //  justify-items: center;
   }
 
 .box1 {
@@ -33,10 +33,7 @@ html, body {
 
 .box2 {
     font-weight: bold;
-    // background-image: url('../img/newspaper-background.jpg');
-    // background-size: cover;
     background-color: white;
-    text-align: center;
     border: 5px solid black;
     border-radius:10px;
     box-shadow:  1px -1px $pinkbg,
@@ -57,15 +54,21 @@ html, body {
     font-size: 1em;
   }
 
-  #username {
+  #email {
     @include inputStyle();
+    text-align: left;
     &:hover {
         background-color: lightpink;
     }
   }
 
+.email-label {
+  padding-right: 24px;
+}
+
   #password {
     @include inputStyle();
+    text-align: left;
     &:hover {
         background-color: lightpink;
     }

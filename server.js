@@ -4,7 +4,10 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 var passport = require("./config/passport");
 var session = require("express-session");
+const {getNews} = require("./routes/api-news");
+var cors = require('cors')
 
+app.use(cors())
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -33,5 +36,6 @@ app.get("*", (req, res) => {
 db.sequelize.sync().then(function() {
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
+  getNews();
 });
 });
