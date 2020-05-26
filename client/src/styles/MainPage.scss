@@ -135,6 +135,21 @@
 }
 }
 
+.settingsLink {
+  height: 5vh;
+  width: 50%;
+  background-color:black;
+  color: white;
+  border:0.1em solid black;
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: 3px 3px 3px #e007aa;
+  padding: 3% 10% 3% 10%;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-weight: bold;
+}
+
 .weather-box {
   background-color:#f7e9f3;
   grid-column: 1;

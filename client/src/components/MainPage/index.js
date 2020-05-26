@@ -11,13 +11,13 @@ import NewsImg from '../../img/test-img.jpg';
 function MainPage(props) {
     console.log("propsss",props.loggedIn);
     if (props.loggedIn) {
-        var loginButton = <div className="mp-cell signup">
+        var loginButton = <div className="mp-cell login-cell">
         <div className="card__text">
         
          {/* <h3 className="card--header">Login/Signup</h3> */}
 
                 {/* <button className="card--header" onClick={props.handleSignup}>Login/Signup</button> */}
-                <div><p className = "hasAccount"><Link to ='/settings' className = "settingsLink">Settings</Link></p></div>
+                <div><p className = "hasAccount"><Link to ='/settings' className = "settingsLink">Profile</Link></p></div>
                 {/* <button onClick={props.logout}>Logout</button> */}
 
             </div>
