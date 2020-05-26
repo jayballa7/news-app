@@ -8,7 +8,7 @@ function TableSavedArticles(props){
         <table className="settings-table">
             <thead>
                 <tr>
-                <th className = "table-heading" scope="col">Article Title</th>
+                <th className = "table-heading" scope="col">Headline</th>
                 </tr>
             </thead>
             {props.savedArticles.map((article,index)=>(

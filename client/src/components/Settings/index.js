@@ -275,7 +275,7 @@ class Settings extends React.Component{
                             <img className = "img" src={Img} alt="profile-photo"/>
                         </div>
                         <div className="setting-card__text">
-                            <h1 className="setting-card--header">Username</h1>
+                            <h1 className="setting-card--header">{this.state.email}</h1>
                             <div className = "notifications">
                                 <label className="switch">
                                 <input type="checkbox" onChange={this.handleNotify.bind(this)} checked={this.state.flag}/>
