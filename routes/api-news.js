@@ -203,8 +203,8 @@ const NewsAPI = require('newsapi');
 var db = require("../models");
 
 
-const newsapi = new NewsAPI('90cf1942d9234f7f9f34095818861d62');
-//const newsapi = new NewsAPI('75d12e4aed504da3878657856f888232');
+// const newsapi = new NewsAPI('90cf1942d9234f7f9f34095818861d62');
+const newsapi = new NewsAPI('75d12e4aed504da3878657856f888232');
 const seconds = 1000;
 const minute = 60 * seconds;
 const hour = minute * 60;
