@@ -411,7 +411,7 @@ module.exports = {
           </head>
           <body>
               <div class="container" style="background-color: black">
-                  <b style="margin-right: 10px; color: #F781B0">Thank you for using NewsFlash</b><span ><a href="https://newsflash-news-app.herokuapp.com/" style="color:#BA2D65">Go to App</a></span> <br> 
+                  <b style="margin-right: 10px; color: #F781B0">Thank you for using NewsFlash</b><span ><a href="https://newsflash-news-app.herokuapp.com/" style="color:white">Go to App</a></span> <br> 
                   <img style="width: 280px; height:260px;margin-right: 5px;" src='https://media.giphy.com/media/KxsmofvNnJWGLs3haf/giphy.gif'></img>
                   ${links}
                 </div>
@@ -421,7 +421,7 @@ module.exports = {
               from: '"NewsFlash " <newsflash12Hr@gmail.com>', // sender address
               to: obj.email,
               //bcc: obj.email,
-              subject: "Your 12Hr dose of news delivered :heavy_check_mark: ", // Subject line
+              subject: "Your 12Hr dose of news delivered", // Subject line
               // text: "Thank you for using News Flash", // plain text body
               //html: "<b>Thank you for using News Flash</b> <br> <img src='https://media.giphy.com/media/KxsmofvNnJWGLs3haf/giphy.gif'></img>" // html body
               html: html
