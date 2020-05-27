@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import '../styles/Searchbox.scss';
-import axios from 'axios';
-import MainPage from './MainPage';
 
 class Searchbox extends Component {
     constructor(props) {
@@ -18,19 +16,6 @@ class Searchbox extends Component {
             console.log(this.state.search)
         })
     }
-
-    // handleSearch(e) {
-    //     e.preventDefault();
-    //     console.log(this.state.search);
-    //     axios.get('/api/' + this.state.search).then(response => {
-    //         console.log(response);
-    //         this.setState({
-    //             results: response.data
-    //         }, () => {
-    //             this.props.newsArray = [...response.data]
-    //         })
-    //     })
-    // }
 
 
     render() {
