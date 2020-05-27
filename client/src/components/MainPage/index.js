@@ -7,7 +7,7 @@ import Logo from "../Logo.js";
 import Searchbox from "../Searchbox.js";
 import Weather from "../Weather.js";
 import NewsImg from '../../img/test-img.jpg';
-import axios from 'axios';
+
 
 function MainPage(props) {
     console.log("propsss",props.loggedIn);
@@ -100,23 +100,11 @@ function MainPage(props) {
                        <div className="card__text">
                        <h5 className="card--header">{article.title}</h5>
                        <div className="separator"></div>
-                       <div className="card--footer"><button className="btn">Read</button></div>
+                       <div className="card--footer"><button className="btn"><a href = {article.url} target = "_blank" style ={{textDecoration:"none", color: "white"}}>Read</a></button></div>
                    </div>
                    </div>
                 ))} 
 
-            {/* {props.results.map((article,index)=>(
-                <div className={"mp-cell sidebox-"+index}>
-                    <div className="card--profile">
-                        <img className = "img" src={article.urlToImage? article.urlToImage:NewsImg} alt="news-img"/>
-                    </div>
-                       <div className="card__text">
-                       <h5 className="card--header">{article.title}</h5>
-                       <div className="separator"></div>
-                       <div className="card--footer"><button className="btn">Read</button></div>
-                   </div>
-                   </div>
-                ))}  */}
             </div>
             </div>
 
