@@ -317,8 +317,10 @@ and (-webkit-device-pixel-ratio : 3)  {
   // text-align: center;
   // display:grid;
   gap: .5em;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-rows: 23vh 10vh 25vh 30vh repeat(10, minmax(100px, 1fr));
+  // grid-template-columns: repeat(2, minmax(0, 1fr));
+  // grid-template-rows: 23vh 10vh 25vh 30vh repeat(10, minmax(100px, 1fr));
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: minmax(100px, auto);
   // img {
   //   width: 100%;
   //   object-fit: cover;
