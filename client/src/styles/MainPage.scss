@@ -285,6 +285,26 @@
   grid-row: 6;
 }
 
+.sidebox-17{
+  grid-column: 1;
+  grid-row: 7;
+}
+
+.sidebox-18 {
+  grid-column: 2;
+  grid-row: 7;
+}
+
+.sidebox-19 {
+  grid-column: 3;
+  grid-row: 7;
+}
+
+.sidebox-20 {
+  grid-column: 4;
+  grid-row: 7;
+}
+
 .ticker-cell {
   position: fixed;
   bottom: 0px;
@@ -649,6 +669,10 @@ and (-webkit-device-pixel-ratio : 3)  {
 
 .sidebox-30{
   grid-area: sidebox-20;
+}
+
+.ticker-cell {
+font-size: 1em;
 }
 
 }
