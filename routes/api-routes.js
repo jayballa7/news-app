@@ -1,7 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
-const { getArticles } = require("./api-news");
+const { getArticles, getData } = require("./api-news");
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -254,6 +254,20 @@ app.get('/api/user/saved/:email', (req, res) => {
       .then(res.end());
     })
 
+    app.get('/api/:query', (req, res) => {
+      getData(req.params.query, '', data => {
+        list = [];
+        console.log(data);
+        for (let i = 0; i < data.length; i++) {
+          if(i <= 12) {
+            list.push(data[i])
+        
+          }
+
+        }
+        res.send(list);
+      })
+    })
 
 };
 

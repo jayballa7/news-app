@@ -26,6 +26,7 @@ class Members extends React.Component{
         this.fillPage=this.fillPage.bind(this)
         this.handleSignup = this.handleSignup.bind(this)
         this.handleSaveClick=this.handleSaveClick.bind(this)
+        this.handleSearch=this.handleSearch.bind(this)
     }
     componentDidMount(){
         this.displayName();
@@ -115,6 +116,19 @@ class Members extends React.Component{
     //     .catch(err=>console.log(err))
       
     // }
+
+    handleSearch(data) {
+        console.log('came back to members page');
+        console.log('searching for', data);
+        axios.get('/api/' + data).then(response => {
+            console.log(response);
+            this.setState({
+                news: response.data,
+                loggedInArticles: response.data
+            })
+        })
+    }
+
     handleSaveClick(event){
         console.log("Title",event.target.dataset.title);
         console.log("URL",event.target.dataset.link);
@@ -194,6 +208,7 @@ class Members extends React.Component{
             news={this.state.news}
             loggedIn={this.state.loggedIn}
             handleSaveClick={this.handleSaveClick}
+            handleSearch={this.handleSearch}
            
           //   title={this.state.loggedInArticles[0]}
             />

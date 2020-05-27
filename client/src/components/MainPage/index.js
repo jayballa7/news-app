@@ -7,6 +7,7 @@ import Logo from "../Logo.js";
 import Searchbox from "../Searchbox.js";
 import Weather from "../Weather.js";
 import NewsImg from '../../img/test-img.jpg';
+import axios from 'axios';
 
 function MainPage(props) {
     console.log("propsss",props.loggedIn);
@@ -40,6 +41,15 @@ function MainPage(props) {
     //     console.log("inside for",props.loggedInArticles[0].title)
 
     // }
+
+    // function handleSearch(data) {
+    //     console.log('came back to main page');
+    //     console.log('searching for', data);
+    //     axios.get('/api/' + data).then(response => {
+    //         console.log(response);
+    //     })
+    // }
+
     return(
         <div className="container">
             <div className="mainpage">
@@ -61,7 +71,8 @@ function MainPage(props) {
                     </div>
                 </div>
                 <div className="s-cell searchbox">
-                        <Searchbox />
+                        <Searchbox 
+                        handleSearch = {props.handleSearch} />
                         <h3 className="headlines-text">Latest Headlines</h3>
                 </div>
                 {loginButton}
@@ -93,6 +104,19 @@ function MainPage(props) {
                    </div>
                    </div>
                 ))} 
+
+            {/* {props.results.map((article,index)=>(
+                <div className={"mp-cell sidebox-"+index}>
+                    <div className="card--profile">
+                        <img className = "img" src={article.urlToImage? article.urlToImage:NewsImg} alt="news-img"/>
+                    </div>
+                       <div className="card__text">
+                       <h5 className="card--header">{article.title}</h5>
+                       <div className="separator"></div>
+                       <div className="card--footer"><button className="btn">Read</button></div>
+                   </div>
+                   </div>
+                ))}  */}
             </div>
             </div>
 

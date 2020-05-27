@@ -203,7 +203,8 @@ const NewsAPI = require('newsapi');
 var db = require("../models");
 
 
-const newsapi = new NewsAPI('75d12e4aed504da3878657856f888232');
+const newsapi = new NewsAPI('90cf1942d9234f7f9f34095818861d62');
+//const newsapi = new NewsAPI('75d12e4aed504da3878657856f888232');
 const seconds = 1000;
 const minute = 60 * seconds;
 const hour = minute * 60;
@@ -225,10 +226,10 @@ const nodemailer = require("nodemailer");let transporter = nodemailer.createTran
   }
 });
 
-const getData = (category, cb) => {
+const getData = (query, category, cb) => {
     
   newsapi.v2.topHeadlines({
-    // q: query,
+    q: query,
     category: category,
     language: 'en',
     country: 'us'
@@ -314,7 +315,7 @@ const storeLinks = () => {
         linkLimit = maxArticles / categories.length;
         let links = [];
         let titles = [];
-        getData(categories[j], data => {
+        getData('', categories[j], data => {
           links = getLinks(data, 'url');
           titles = getLinks(data, 'title');
           obj.links = [...links, ...obj.links]; 
@@ -382,7 +383,8 @@ async function sendEmail(){    let info = await transporter.sendMail({
 module.exports = {
   getNews,
   stopNews,
-  getArticles
+  getArticles,
+  getData
 }
 
 
