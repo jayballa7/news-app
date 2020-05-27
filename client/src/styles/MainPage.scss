@@ -294,7 +294,10 @@
   padding-bottom: 2%;
 }
 
-@media screen and (max-width: 575.98px) {
+@media only screen 
+and (min-device-width : 350px) 
+and (max-device-width : 812px)
+and (-webkit-device-pixel-ratio : 3)  {
 
   // .mp-cell {
   //   // display: grid;

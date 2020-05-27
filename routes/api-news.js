@@ -208,6 +208,7 @@ const seconds = 1000;
 const minute = 60 * seconds;
 const hour = minute * 60;
 const hours = 12 * hour;
+const maxArticles = 12;
 let linkLimit = 3;
 
 let userArticles = [];
@@ -310,7 +311,7 @@ const storeLinks = () => {
       }
 
       for (let j = 0; j < categories.length; j++) {
-        linkLimit = 10 / categories.length;
+        linkLimit = maxArticles / categories.length;
         let links = [];
         let titles = [];
         getData(categories[j], data => {
@@ -321,11 +322,7 @@ const storeLinks = () => {
 
           saveArticles(links, users[i].email, titles);
           
-          if (obj.links.length >= 9) {
-            if (obj.links.length == 10) {
-              obj.links.pop(obj.links[9]);
-              obj.titles.pop(obj.links[9]);
-            }
+          if (obj.links.length >= maxArticles) {
             //console.log("first ", obj);
             // send emails to users
             if (users[i].notify) {
