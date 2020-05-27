@@ -23,6 +23,7 @@ $darkpink:#ba2d65;
 
   #search {
     height: 5vh;
+    font-size: 1em;
     padding-top: 1%;
     margin-right: 2%;
     @include searchStyle();
@@ -59,9 +60,21 @@ $darkpink:#ba2d65;
     background-color:#FFFFFF;
     }
 @media all and (max-width:30em){
-
+  .search-articles {
+    height: 20vh;
+    font-weight: bold;
+    font-size: 1.5em;
+    padding-top: 3%;
+    background-color: white;
+    border: 5px solid #e007aa;
+    border-radius:10px;
+}
+  .search-label {
+    font-weight: bold;
+    // padding-right: 24px;
+  }
   #search {
-    height: 4vh;
+    height:3vh;
     padding-top: -3%;
   } 
 .search-btn{

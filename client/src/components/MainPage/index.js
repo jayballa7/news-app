@@ -50,7 +50,8 @@ function MainPage(props) {
                 <div className="mp-cell username">
                 <div className="card__text">
 
-                 <h3 className="card--header">Welcome {props.email}</h3>
+                 <h3 className="card--header">Welcome</h3>
+                 <p className = "username-text">{props.email}</p>
 
                     </div>
                 </div>

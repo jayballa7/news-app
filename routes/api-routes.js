@@ -156,7 +156,7 @@ app.get("/api/categories/:email", (req, res) => {
   .then(data => {
       let categories = data[0].dataValues.categories.replace(" ", "").split(',');
       // console.log('Categories:', categories);
-      let limit = Math.floor(13 / categories.length);
+      let limit = Math.floor(12 / categories.length);
       for (let i = 0; i < categories.length; i++) {
         getArticles(categories[i], limit,res);
       }
