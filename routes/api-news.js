@@ -411,7 +411,7 @@ module.exports = {
           </head>
           <body>
               <div class="container" style="background-color: black">
-                  <b style="margin-right: 10px; color: #F781B0">Thank you for using NewsFlash</b><span ><a href="#" style="color:#BA2D65">Go to App</a></span> <br> 
+                  <b style="margin-right: 10px; color: #F781B0">Thank you for using NewsFlash</b><span ><a href="https://newsflash-news-app.herokuapp.com/" style="color:#BA2D65">Go to App</a></span> <br> 
                   <img style="width: 280px; height:260px;margin-right: 5px;" src='https://media.giphy.com/media/KxsmofvNnJWGLs3haf/giphy.gif'></img>
                   ${links}
                 </div>
