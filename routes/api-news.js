@@ -271,7 +271,7 @@ const getNews = () => {
 
     // calls the storeLinks function to save articles to the database
     storeLinks();
-  },300000);
+  },hours);
   
 }
 
