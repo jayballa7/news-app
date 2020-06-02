@@ -26,6 +26,8 @@ Anybody can checkout the latest news from different sources on this app and read
 ​
 # Environment
 This app is deployed using heroku @  [NewsFlash](https://newsflash-news-app.herokuapp.com/)
+
+![image](https://user-images.githubusercontent.com/3301063/83564993-76b6cb80-a4d2-11ea-8c6f-5b1124d02dd3.png)
 ​
 # Contributors
 - Jennifer Ballard
