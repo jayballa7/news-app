@@ -8,6 +8,7 @@ import MainPage from '../MainPage';
 import Img from "../../img/test-img.jpg";
 import cloneDeep from 'lodash/cloneDeep';
 import Header from '../Header.js'
+
 class Members extends React.Component{
     constructor() {
         super()
@@ -18,7 +19,8 @@ class Members extends React.Component{
             news:[],
             loggedInArticles:[],
             loggedIn:false,
-            APIKey:'ea25551a0dd04cda9c50a68ac77e6940',
+            // APIKey:'ea25551a0dd04cda9c50a68ac77e6940',
+            APIKey: 'fb86349a9bcd480fbe62f2e9d5e07ab9',
             redirectTo: null
         }
         // this.logout = this.logout.bind(this)
